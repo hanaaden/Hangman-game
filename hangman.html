@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="hangman.css">
+</head>
+<body>
+    <video autoplay muted loop id="backgroundVideo">
+        <source src="bgvideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <audio id="gameAudio" src="Background.mp3" loop preload="auto"></audio>
+    <div class="typing">WELCOME TO THE HANGMAN GAME</div>
+    <div class="signup" style="display: none;">
+        <p style="font-size: 30px; padding-left: 100px;">REGISTER</p>
+        <p>Username</p>
+        <P><input id="sign" type="text" placeholder="Username" name="user" required style="background-color: black;"></P>
+        <p>Email</p>
+        <P><input id="sign"  type="text" placeholder="example@gmail.com" name="email" required  style="background-color: black;"></P>
+        <p>Password</p>
+        <P><input id="sign"  type="password" placeholder="**********" name="pass" required  style="background-color: black;"></P>
+        <button id="signingup">Sign Up</button>
+    </div>
+    
+    <div class="signin" >
+        <p style="font-size: 30px; padding-left: 60px;">WELCOME BACK</p>
+        <p>Email/username</p>
+        <P><input id="signin"  type="text" placeholder="----------------" name="email" required  style="background-color: black;"></P>
+        <p>Password</p>
+        <P><input id="signin"  type="password" placeholder="**********" name="pass" required  style="background-color: black;"></P>
+        <button id="signingin">LOG IN</button>
+        <p>Don't have account? <a href="#" style="color: rgb(83, 240, 83);" id="REGISTERa">REGISTER</a></p>
+    </div>
+    <div class="intro" style="display: none;">
+        <div><img id="smiling" src="elien.webp" style="width: 100px; height: 100px; margin-left: 360px;"> </div>
+        Welcome to Hangman! In this game, you'll be guessing a hidden word one letter at a time. Each time you guess a letter, if it’s in the word, it will be revealed in its correct position. But be careful! You have a limited number of incorrect guesses—typically eleven—before the hangman is fully drawn. The goal is to guess the word before your attempts run out. So, think carefully, make your guesses, and enjoy the challenge of uncovering the mystery word! Ready to play? Let's get started!
+        <button id="btn">Start</button>
+    </div>
+    <!-- levels -->
+    <div class="levels" >
+   
+        <div  class="easy">
+            <div class="imgLevels">   <img id="easy" src="smiling2.webp"></div>
+               <div class="textLevels" >EASY</div>
+           </div>
+           <div class="medium"> 
+           
+           <div class="imgLevels" > <img id="medium" style="width: 200px;" src="medium.png"></div>
+           <div class="textLevels">MEDIUM</div>
+           </div>
+           <div class="hard">
+          
+           <div class="imgLevels"> <img id="hard" src="angryhard.png"></div>
+           <div class="textLevels" >HARD</div>
+           </div>
+     </div>
+      <!-- level1    -->
+    <div class="level1" style="display: none;">
+        <div class="order1" style="display: none;">The level 1 words is here</div>
+    <div class="wordslvl1" style="display: none;">
+        <span id="l1f1">__</span>
+        <span id="l1f2">__</span>
+        <span id="l1f3">__</span>
+        <span id="l1f4">__</span>
+      
+    </div>
+    <button id="Hintlvl1"  style="background-color: black;">HINT</button>
+    <input type="text" id="guesslv1" style="display: none;" placeholder="enter letters">
+    <button id="submitlv1" style="display: none;">Enter</button>
+    </div>
+    <!-- level2 -->
+    <div class="level2">
+        <div class="order" style="display: none;">THE level 2 WORD IS HERE</div>
+    <div class="word" style="display: none;">
+        <span id="f1">__</span>
+        <span id="f2">__</span>
+        <span id="f3">__</span>
+        <span id="f4">__</span>
+    </div>
+    <button id="Hint"  style="background-color: black;">HINT</button>
+    <input type="text" id="guess" placeholder="enter letters" style="display: none;">
+    <button id="submit" style="display: none;">Enter</button>
+    </div>
+    <!-- level3 -->
+    <div class="level3">
+        <div class="order3" style="display: none;">THE level 3 WORD IS HERE</div>
+    <div class="wordslvl3" style="display: none;">
+        <span id="l3f1">__</span>
+        <span id="l3f2">__</span>
+        <span id="l3f3">__</span>
+        <span id="l3f4">__</span>
+        <span id="l3f5">__</span>
+    </div>
+    <button id="Hintlvl3"  style="background-color: black;">HINT</button>
+    <input type="text" id="guesslvl3" placeholder="enter letters" style="display: none;">
+    <button id="submitlvl3" style="display: none;">Enter</button>
+    </div>
+  
+    <!-- after gussing the correct word level1 -->
+    <div class="resultlvl1">  <div class="welldone">WELLDONE</div>
+        <p>
+            <img   style="height: 200px; width: 200px; margin-left: 140px;" src="good.webp">
+        </p> 
+        <button id="agreeelvl1">Next</button>
+    </div>
+      <!-- after gussing the correct word level2-->
+      <div class="result">  <div class="welldone">WELLDONE</div>
+      <p>
+          <img   style="height: 200px; width: 200px; margin-left: 140px;" src="good.webp">
+      </p> 
+      <button id="agreee">Next</button>
+  </div>
+    <!-- after gussing the correct word level-->
+    <div class="resultlvl3">  <div class="welldone">WELLDONE</div>
+        <p>
+            <img   style="height: 200px; width: 200px; margin-left: 140px;" src="good.webp">
+        </p> 
+        <button id="agreeelvl3">Next</button>
+    </div>
+   <!-- warning level1  -->
+    <div class="warning1" style="display: none;">
+        <p style="font-size: 50px; padding-left: 160px;">NOTICE</p>
+        <img style="width: 150px; height:150px; border-radius: 100px; margin-left: 170px; margin-top: -30px;" src="redr.png">
+        <p>After you guess the all letters of the word  make sure that you enter
+            the complete word at ones for example(drive) word 
+            <br>
+            all levels guess chances 11  
+        </p>
+        <button id="agreelvl1">AGREE</button>
+    </div>
+    <!-- warning level2 -->
+    <div class="warning">
+        <p style="font-size: 50px; padding-left: 160px;">NOTICE</p>
+        <img style="width: 150px; height:150px; border-radius: 100px; margin-left: 170px; margin-top: -30px;" src="redr.png">
+        <p>After you guess the all letters of the word  make sure that you enter
+            the complete word at ones for example(drive) word
+            <br>
+            all levels guess chances 11 
+        </p>
+        <button id="agree">AGREE</button>
+    </div>
+    <!-- warning level3 -->
+    <div class="warning3">
+        <p style="font-size: 50px; padding-left: 160px;">NOTICE</p>
+        <img style="width: 150px; height:150px; border-radius: 100px; margin-left: 170px; margin-top: -30px;" src="redr.png">
+        <p>After you guess the all letters of the word  make sure that you enter
+            the complete word at ones for example(drive) word
+            <br>
+            all levels guess chances 11 
+        </p>
+        <button id="agreelvl3">AGREE</button>
+    </div>
+    <div class="success" style="display: none;">
+        <p style="font-size: 40px; padding-left: 10px;">YOU MADE IT DUDE</p>
+        <img style="height: 200px; width: 200px; margin-left: 140px;" src="good.webp" alt="Success Image">
+        <button id="back">GO LEVELS</button>
+    </div>
+    <div class="failure" style="font-size: 35px; padding-left: 15px;"> <p>SORRY YOU DIDN'T MAKE IT</p>
+        <img style="width: 200px; height:200px; border-radius: 100px; margin-left: 170px; margin-top: -30px;" src="redsadail.png">
+        <button id="fail" >TRY AGAIN</button>
+    </div>
+
+   
+    
+    <div class="box" style="display: none;">
+        <div class="tire2" style="display: none;"></div>
+        <div class="tire1" style="display: none;"></div>
+        <div class="face" style="display: none;"></div>
+        <div class="wirelong" style="display: none;"></div>
+        <div class="wire1" style="display: none;"></div>
+        <div class="lefthand" style="display: none;"></div>
+        <div class="righthand" style="display: none;"></div>
+        <div class="wire11" style="display: none;"></div>
+        <div class="leftleg" style="display: none;"></div>
+        <div class="rightleg" style="display: none;"></div>
+        <div class="base" style="display: none;"></div>
+    </div>
+    <script src="hangman.js"></script>
+</body>
+</html>

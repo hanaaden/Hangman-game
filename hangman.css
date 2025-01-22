@@ -12,11 +12,18 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden; /* Prevents scrollbars */
+    height: 100vh;
+    overflow-y: auto;
 }
 body {
     color: rgb(83, 240, 83);
+}
+.note{
+    font-size: 50px; 
+    padding-left: 160px;
+}
+.warningimg{
+    width: 150px; height:150px; border-radius: 100px; margin-left: 170px; margin-top: -30px;
 }
 
 .typing {
@@ -30,6 +37,18 @@ body {
 }
 @keyframes typing {
     from { width: 0; }
+}
+#wellcome{
+    font-size: 30px; 
+    padding-left: 60px;
+}
+.regis{
+    font-size: 30px; padding-left: 100px;
+}
+#smiling{
+    width: 20px;
+     height: 20px;
+     margin-left: 360px;
 }
 .box {
     margin-top: -480px;
@@ -63,7 +82,7 @@ body {
 .intro {
     padding-left: 30px;
     width: 900px;
-    height: 400px;
+    height: 430px;
     padding-top: 20px;
     word-spacing: 2px;
     margin-top: 100px;
@@ -202,15 +221,21 @@ padding-left: 10px;
     display: none;
   
 }
+#welldoneimg{
+    height: 200px; width: 200px; margin-left: 140px;
+}
 .welldone{
 margin-top: -100px;
 margin-left: 140px;
 }
+#failimg{
+    width: 200px; height:200px; border-radius: 100px; margin-left: 170px; margin-top: -30px;
+}
 #smiling{
 border-radius: 95px;
-width: 350px;
-height: 350px;
-margin-left: 150px;
+width: 150px;
+height: 150px;
+margin-left: 300px;
 }
 #agreee,#agreeelvl1,#agreeelvl3,#back{
 height: 40px;
@@ -459,4 +484,1134 @@ padding-left: 30px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
    border-radius: 20px;
+}
+@media (max-width: 768px) and (min-width: 481px) {
+    /* Styles for devices like iPad Mini or iPhone 6/7/8 */
+    .typing {
+        font-size: 30px;
+        padding-left: 30px;
+        width: 1003px;
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: 'Courier New', Courier, monospace;
+        animation: typing 2s steps(20, end), .2s steps(12, end);
+    }
+    .signup{
+        padding-left: 30px;
+            width: 400px;
+            font-weight: bolder;
+            height: 480px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 130px;
+            color: rgb(83, 240, 83);
+            border: 1px solid rgb(125, 255, 125);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+           border-radius: 20px;
+         
+        }
+        #sign,#signin{
+        width: 300px;
+        height: 40px;
+        border-radius: 20px;
+        padding-left: 20px;
+        color: green;
+        border: 1px solid rgb(126, 249, 126);
+        
+        }
+        #welldoneimg{
+            height: 200px; width: 200px; 
+           margin-top: 20px;
+           margin-left: 40px;
+            
+        }
+        .welldone{
+        margin-top: -100px;
+        margin-left: 40px;
+        }
+        #signingup,#signingin{
+        width: 150px;
+        height: 40px;
+        color: rgb(83, 240, 83);
+        background-color: transparent;
+        border: 2px solid rgb(100, 255, 100);
+         margin-left: 100px;
+          border-radius: 30px;
+           margin-top: 10px;
+           font-size: 20px;
+        }
+        #signingup:hover{
+        background-color: rgb(126, 249, 126);
+        color: green;}
+        #signingin:hover{
+        background-color: rgb(126, 249, 126);
+        color: green;
+        }
+        .signin{
+        padding-left: 30px;
+            width: 400px;
+            font-weight: bolder;
+            height: 480px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left:130px;
+            color: rgb(83, 240, 83);
+            border: 1px solid rgb(125, 255, 125);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+           border-radius: 20px;
+        }
+        .intro {
+            padding-left: 30px;
+            width: 400px;
+            height: 750px;
+            padding-top: 20px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 120px;
+            border: 1px solid rgb(126, 249, 126);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+        }
+        #smiling{
+            width: 100px;
+             height: 100px;
+             margin-left: 60px;
+        }
+        
+            #btn {
+                margin-left: 100px;
+                margin-top: 26px;
+                border: 1px solid rgb(83, 240, 83);
+                background-color: transparent;
+                width: 200px;
+                height: 60px;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 50px;
+                color: rgb(83, 240, 83);
+            }
+            #btn:hover {
+                background-color: rgb(83, 240, 83);
+                color: darkgreen;
+                cursor: pointer;
+            }
+            .levels{
+                display: none;
+                align-content: center;
+                justify-content: space-evenly;
+                
+                font-size: 20px;
+                font-weight: bolder;
+                width: 700px;
+                height: 400px;
+                margin-top: 200px;
+                margin-left: 30px;
+                color: rgb(125, 255, 125);
+                border: 2px solid rgb(83, 240, 83);
+                border-radius: 20px;
+                }
+                .easy{
+                display:flex;
+                flex-direction: column;
+                font-size: 30px;
+                align-self: center;
+                color: rgb(100, 255, 100);
+                
+                border-radius: 100px;
+                }
+                
+                .medium{
+                display:flex;
+                flex-direction: column;
+                font-size: 30px;
+                align-self: center;
+                color: rgb(100, 255, 100);
+                
+                border-radius: 100px;
+                }
+                
+                .hard{
+                display:flex;
+                flex-direction: column;
+                font-size: 30px;
+                align-self: center;
+                color: rgb(100, 255, 100);
+                
+                
+}
+.warning,.warning1,.warning3{
+    padding-left: 30px;
+        width: 550px;
+        font-weight: bolder;
+        height: 489px;
+        padding-left: 50px;
+        padding-top: 10px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 120px;
+        color: red;
+        border: 1px solid red;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        display: none;
+    }
+    .box {
+        margin-top: -170px;
+        margin-left: 290px;
+        width: 400px;
+        height: 500px;
+        border: 1px solid rgb(83, 240, 83);
+    }
+    .success{
+        padding-left: 30px;
+            width: 550px;
+            font-weight: bolder;
+            height: 470px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 120px;
+            color: rgb(83, 240, 83);
+            border: 1px solid rgb(125, 255, 125);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+           display: none;
+        }
+        .failure{
+        padding-left: 30px;
+            width: 550px;
+            font-weight: bolder;
+            height: 470px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 120px;
+            color: red;
+            border: 1px solid red;
+            font-family: 'Courier New', Courier, monospace;
+           display: none;
+           
+        }
+       
+            .result,.resultlvl1,.resultlvl3{
+                padding-left: 10px;
+                    width: 400px;
+                    height: 350px;
+                    padding-left: 100px;
+                    padding-top: 130px;
+                    word-spacing: 2px;
+                    margin-top: 100px;
+                    margin-left: 120px;
+                    border: 1px solid rgb(126, 249, 126);
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: 50px;
+                    display: none;
+                  
+                }
+                #agreee,#agreeelvl1,#agreeelvl3,#back{
+                    height: 40px;
+                    width: 200px;
+                    background-color: transparent;
+                    border: 1px solid green;
+                    font-size: 25px;
+                    margin-left: 45px;
+                    color: green;
+                    font-weight: bolder;
+                    margin-top: 20px;
+                    }
+}
+@media (max-width: 480px) {
+    /* Styles for small phones like iPhone SE, or compact Android phones */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+    .typing {
+        font-size: 20px;
+        padding-left: 30px;
+        width: 800px;
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: 'Courier New', Courier, monospace;
+        animation: typing 2s steps(20, end), .2s steps(12, end);
+    }
+    .signup{
+        padding-left: 30px;
+            width: 270px;
+            font-weight: bolder;
+            height: 480px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 30px;
+            color: rgb(83, 240, 83);
+            border: 1px solid rgb(125, 255, 125);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+           border-radius: 20px;
+         
+        }
+        #sign,#signin{
+        width: 190px;
+        height: 40px;
+        border-radius: 20px;
+        padding-left: 20px;
+        color: green;
+        border: 1px solid rgb(126, 249, 126);
+        
+        }
+        #signingup,#signingin{
+        width: 150px;
+        height: 40px;
+        color: rgb(83, 240, 83);
+        background-color: transparent;
+        border: 2px solid rgb(100, 255, 100);
+         margin-left: 30px;
+          border-radius: 30px;
+           margin-top: 10px;
+           font-size: 20px;
+        }
+        #signingup:hover{
+        background-color: rgb(126, 249, 126);
+        color: green;}
+        #signingin:hover{
+        background-color: rgb(126, 249, 126);
+        color: green;
+        }
+        .signin{
+            padding-left: 30px;
+            width: 270px;
+            font-weight: bolder;
+            height: 480px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 30px;
+            color: rgb(83, 240, 83);
+            border: 1px solid rgb(125, 255, 125);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+           border-radius: 20px;
+        }
+        #wellcome{
+            font-size: 20px;
+            padding-left: 20px;
+        }
+        .regis{
+            font-size: 20px;
+            padding-left: 20px;
+        }
+        .intro {
+            padding-left: 30px;
+            width: 260px;
+            height: 570px;
+            padding-top: 20px;
+            word-spacing: 2px;
+            margin-top: 50px;
+            margin-left: 30px;
+            border: 1px solid rgb(126, 249, 126);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+        }
+        #smiling{
+            width: 100px;
+             height: 100px;
+             margin-left: 60px;
+        }
+        
+            #btn {
+                margin-left: 50px;
+                margin-top: 40px;
+                border: 1px solid rgb(83, 240, 83);
+                background-color: transparent;
+                width: 100px;
+                height: 60px;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 30px;
+                color: rgb(83, 240, 83);
+            }
+            #btn:hover {
+                background-color: rgb(83, 240, 83);
+                color: darkgreen;
+                cursor: pointer;
+            }
+            
+            .levels{
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: space-evenly;
+                display: none;
+                font-size: 15px;
+                font-weight: bolder;
+                width: 270px;
+                height: 600px;
+                margin-top: 40px;
+                margin-left: 47px;
+                color: rgb(125, 255, 125);
+                border: 2px solid rgb(83, 240, 83);
+                border-radius: 20px;
+                }
+                .easy{
+                display:flex;
+                flex-direction: column;
+                font-size: 20px;
+                align-self: center;
+                color: rgb(100, 255, 100);
+                
+                border-radius: 100px;
+                }
+                
+                .medium{
+                display:flex;
+                flex-direction: column;
+                font-size: 20px;
+                align-self: center;
+                color: rgb(100, 255, 100);
+                
+                border-radius: 100px;
+                }
+                
+                .hard{
+                display:flex;
+                flex-direction: column;
+                font-size: 20px;
+                align-self: center;
+                color: rgb(100, 255, 100);
+                
+                
+}
+.imgLevels{
+    margin-top: -29px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    }
+.warning,.warning1,.warning3{
+    padding-left: 10px;
+        width: 250px;
+        font-weight: bolder;
+        height: 500px;
+        
+        padding-top: 10px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 50px;
+        color: red;
+        border: 1px solid red;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 15px;
+        display: none;
+    }
+    .warningimg{
+        width: 150px; height:150px; border-radius: 100px; margin-left:  50px; margin-top: -30px;
+    }
+#agree,#agreelvl1,#agreelvl3{
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 1px solid red;
+    font-size: 25px;
+    margin-left: 20px;
+    color: red;
+    font-weight: bolder;
+    margin-top: 20px;
+    }
+    .note{
+        font-size: 40px; 
+        padding-left: 30px;
+    }
+    .box {
+        margin-top: 80px;
+        margin-left: 20px;
+        width: 300px;
+        height: 500px;
+        border: 1px solid rgb(83, 240, 83);
+    }
+    .success{
+        padding-left: 30px;
+            width: 550px;
+            font-weight: bolder;
+            height: 470px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 120px;
+            color: rgb(83, 240, 83);
+            border: 1px solid rgb(125, 255, 125);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+           display: none;
+        }
+        .failure{
+        padding-left: 30px;
+            width: 280px;
+            font-weight: bolder;
+            height: 470px;
+            padding-left: 50px;
+            padding-top: 10px;
+            word-spacing: 2px;
+            margin-top: 100px;
+            margin-left: 20px;
+            color: red;
+            border: 1px solid red;
+            font-family: 'Courier New', Courier, monospace;
+           display: none;
+           
+        }
+        #welldoneimg{
+            margin-top: 10px;
+            margin-left: -50px;
+            }
+            .welldone{
+               margin-left: -60px;
+            }
+            .face {
+                width: 100px;
+                height: 100px;
+                border: 2px solid rgb(126, 249, 126);
+                margin-left: 20px;
+                border-radius: 150px;
+            }
+            .wire1 {
+            width: 1px;
+            margin-left: 70px;
+            margin-top: -2px;
+            height: 50px;
+            border: 1px solid rgb(83, 240, 83);
+            }
+            .wire11 {
+            width: 1px;
+            margin-left: 70px;
+            height: 70px;
+            border: 1px solid rgb(83, 240, 83);
+            }
+            .lefthand {
+            width: 50px;
+            margin-left: 70px;
+            height: 1px;
+            border: 1px solid rgb(83, 240, 83);
+            transform: rotate(45deg);
+            }
+            .righthand {
+            width: 50px;
+            margin-left: 20px;
+            height: 1px;
+            border: 1px solid rgb(83, 240, 83);
+            transform: rotate(-45deg);
+            }
+            .leftleg {
+            width: 50px;
+            margin-left: 70px;
+            height: 1px;
+            border: 1px solid rgb(83, 240, 83);
+            transform: rotate(45deg);
+            }
+            .rightleg {
+            width: 50px;
+            margin-left: 20px;
+            height: 1px;
+            border: 1px solid rgb(83, 240, 83);
+            transform: rotate(-45deg);
+            }
+            .tire1 {
+            margin-top: 0px;
+            margin-left: 70px;
+            width: 1px;
+            height: 60px;
+            border: 1px solid rgb(83, 240, 83);
+            }
+            .tire2 {
+            margin-top: 50px;
+            margin-left: 70px;
+            width: 160px;
+            height: 1px;
+            border: 1px solid rgb(83, 240, 83);
+            }
+            .base {
+            margin-top: -30px;
+            margin-left: 140px;
+            width: 1px;
+            height: 260px;
+            border: 1px solid rgb(83, 240, 83);
+            transform: rotate(90deg);
+            }
+            .result,.resultlvl1,.resultlvl3{
+                padding-left: 10px;
+                    width: 230px;
+                    height: 380px;
+                    padding-left: 100px;
+                    padding-top: 130px;
+                    word-spacing: 2px;
+                    margin-top: 100px;
+                    margin-left: 20px;
+                    border: 1px solid rgb(126, 249, 126);
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: 50px;
+                    display: none;
+                  
+                }
+               
+                #agreee,#agreeelvl1,#agreeelvl3,#back{
+                    height: 40px;
+                    width: 200px;
+                    background-color: transparent;
+                    border: 1px solid green;
+                    font-size: 25px;
+                    margin-left: -30px;
+                    color: green;
+                    font-weight: bolder;
+                    margin-top: 20px;
+                    }
+                    .order,.order1,.order3 {
+                        /* font-size: 20px;
+                        width: 200px;
+                        padding-left: 10px;
+                        padding-top: 10px; */
+                        font-size: 20px;
+                        padding-left: 30px;
+                       margin-top: -100px;
+                        
+                        font-family: 'Courier New', Courier, monospace;
+                        
+                    }
+                    .word,.wordslvl1,.wordslvl3 {
+                        width: 200px;
+                        padding-left: 10px;
+                        margin-top: 20px;
+                        margin-left: 50px;
+                        height: 40px;
+                        font-size: 20px;
+                        color: rgb(83, 240, 83);
+                        border: 1px solid rgb(83, 240, 83);
+                        }
+                        #guess,#guesslv1,#guesslvl3{
+                        margin-top: 20px;
+                        background-color: transparent;
+                        color: rgb(83, 240, 83);
+                        font-family: 'Courier New', Courier, monospace;
+                        padding-left: 50px;
+                        width: 200px;
+                        height: 30px;
+                        margin-left: 20px;
+                        border: 2px solid rgb(83, 240, 83);
+                        }
+                        #submit,#submitlv1,#submitlvl3 {
+                        margin-left: 50px;
+                        margin-top: 40px;
+                        border: 1px solid rgb(83, 240, 83);
+                        background-color: transparent;
+                        width: 200px;
+                        height: 40px;
+                        font-family: 'Courier New', Courier, monospace;
+                        font-size: 20px;
+                        color: rgb(83, 240, 83);
+                        }
+                        #submit:hover,#submitlv1:hover,#submitlvl3:hover {
+                        background-color: rgb(83, 240, 83);
+                        color: darkgreen;
+                        cursor: pointer;
+                        }
+                        #Hint, #Hintlvl1, #Hintlvl3 {
+                            height: 40px;
+                            width: 200px;
+                            display: none;
+                            border: 1px solid green;
+                            font-size: 25px;
+                            margin-top: 10px;
+                            color: rgb(83, 240, 83);
+                            font-weight: bolder;
+                            /* Aligning with the submit button */
+                            margin-left: 50px; /* Same as the submit button's margin-left */
+                            padding-left: 0;   /* Reset padding */
+                        }
+                        .wirelong {
+                            margin-left: 35px;
+                            margin-top: 35px;
+                            width: 400px;
+                            height: 1px;
+                            border: 1px solid rgb(83, 240, 83);
+                            transform: rotate(90deg);
+                            }
+                            #fail{
+                                margin-left: 20px;
+                            }
+                            #failimg{
+                                margin-left: 20px;
+                            }
+                        
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Styles for tablets or smaller laptops */
+    .typing {
+        font-size: 40px;
+        padding-left: 200px;
+        width: 1203px;
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: 'Courier New', Courier, monospace;
+        animation: typing 2s steps(20, end), .2s steps(12, end);
+    }
+    @keyframes typing {
+        from { width: 0; }
+    }
+    #wellcome{
+        font-size: 30px; 
+        padding-left: 60px;
+    }
+    .regis{
+        font-size: 30px; padding-left: 100px;
+    }
+    #smiling{
+        width: 100px;
+         height: 100px;
+         margin-left: 360px;
+    }
+    .box {
+        margin-top: -280px;
+        margin-left: 400px;
+        width: 400px;
+        height: 500px;
+        border: 1px solid rgb(83, 240, 83);
+    }
+    .order,.order1,.order3 {
+        font-size: 30px;
+        width: 400px;
+        padding-left: 300px;
+        padding-top: 120px;
+    }
+    #btn {
+        margin-left: 200px;
+        margin-top: 26px;
+        border: 1px solid rgb(83, 240, 83);
+        background-color: transparent;
+        width: 200px;
+        height: 60px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 50px;
+        color: rgb(83, 240, 83);
+    }
+    #btn:hover {
+        background-color: rgb(83, 240, 83);
+        color: darkgreen;
+        cursor: pointer;
+    }
+    .intro {
+        padding-left: 70px;
+        width: 700px;
+        height: 800px;
+        padding-top: 20px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 120px; 
+        border: 1px solid rgb(126, 249, 126);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+    }
+    .face {
+        width: 100px;
+        height: 100px;
+        border: 2px solid rgb(126, 249, 126);
+        margin-left: 120px;
+        border-radius: 150px;
+    }
+    .wire1 {
+    width: 1px;
+    margin-left: 170px;
+    margin-top: -2px;
+    height: 50px;
+    border: 1px solid rgb(83, 240, 83);
+    }
+    .wire11 {
+    width: 1px;
+    margin-left: 170px;
+    height: 70px;
+    border: 1px solid rgb(83, 240, 83);
+    }
+    .lefthand {
+    width: 50px;
+    margin-left: 170px;
+    height: 1px;
+    border: 1px solid rgb(83, 240, 83);
+    transform: rotate(45deg);
+    }
+    .righthand {
+    width: 50px;
+    margin-left: 120px;
+    height: 1px;
+    border: 1px solid rgb(83, 240, 83);
+    transform: rotate(-45deg);
+    }
+    .leftleg {
+    width: 50px;
+    margin-left: 170px;
+    height: 1px;
+    border: 1px solid rgb(83, 240, 83);
+    transform: rotate(45deg);
+    }
+    .rightleg {
+    width: 50px;
+    margin-left: 120px;
+    height: 1px;
+    border: 1px solid rgb(83, 240, 83);
+    transform: rotate(-45deg);
+    }
+    .tire1 {
+    margin-top: 0px;
+    margin-left: 170px;
+    width: 1px;
+    height: 60px;
+    border: 1px solid rgb(83, 240, 83);
+    }
+    .tire2 {
+    margin-top: 50px;
+    margin-left: 170px;
+    width: 160px;
+    height: 1px;
+    border: 1px solid rgb(83, 240, 83);
+    }
+    .base {
+    margin-top: -30px;
+    margin-left: 200px;
+    width: 1px;
+    height: 260px;
+    border: 1px solid rgb(83, 240, 83);
+    transform: rotate(90deg);
+    }
+    .wirelong {
+    margin-left: 135px;
+    margin-top: 35px;
+    width: 400px;
+    height: 1px;
+    border: 1px solid rgb(83, 240, 83);
+    transform: rotate(90deg);
+    }
+    .word,.wordslvl1,.wordslvl3 {
+    width: 200px;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-left: 350px;
+    height: 40px;
+    font-size: 30px;
+    color: rgb(83, 240, 83);
+    border: 1px solid rgb(83, 240, 83);
+    }
+    #guess,#guesslv1,#guesslvl3{
+    margin-top: 200px;
+    background-color: transparent;
+    color: rgb(83, 240, 83);
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 10px;
+    width: 200px;
+    height: 30px;
+    margin-left: 50px;
+    border: 2px solid rgb(83, 240, 83);
+    }
+    #submit,#submitlv1,#submitlvl3 {
+    margin-left: 50px;
+    margin-top: 80px;
+    border: 1px solid rgb(83, 240, 83);
+    background-color: transparent;
+    width: 200px;
+    height: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: rgb(83, 240, 83);
+    }
+    #submit:hover,#submitlv1:hover,#submitlvl3:hover {
+    background-color: rgb(83, 240, 83);
+    color: darkgreen;
+    cursor: pointer;
+    }
+    .result,.resultlvl1,.resultlvl3{
+    padding-left: 10px;
+        width: 600px;
+        height: 350px;
+        padding-left: 100px;
+        padding-top: 130px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 150px;
+        border: 1px solid rgb(126, 249, 126);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 50px;
+        display: none;
+      
+    }
+    #welldoneimg{
+        height: 200px; width: 200px; margin-left: 140px;
+    }
+    .welldone{
+    margin-top: -100px;
+    margin-left: 140px;
+    }
+    #failimg{
+        width: 200px; height:200px; border-radius: 100px; margin-left: 170px; margin-top: -30px;
+    }
+    #smiling{
+    border-radius: 95px;
+    width: 350px;
+    height: 350px;
+    margin-left: 150px;
+    }
+    #agreee,#agreeelvl1,#agreeelvl3,#back{
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 1px solid green;
+    font-size: 25px;
+    margin-left: 145px;
+    color: green;
+    font-weight: bolder;
+    margin-top: 20px;
+    }
+    #back:hover,#agreee:hover,#agreeelvl1:hover,#agreeelvl3:hover{
+    background-color: rgb(126, 249, 126);
+    border: 2px solid rgb(83, 240, 83);
+    font-weight: bolder;
+    color: green;
+    cursor: pointer;
+    }
+    .warning,.warning1,.warning3{
+    padding-left: 30px;
+        width: 550px;
+        font-weight: bolder;
+        height: 489px;
+        padding-left: 50px;
+        padding-top: 10px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 200px;
+        color: red;
+        border: 1px solid red;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        display: none;
+    }
+    
+    #agree,#agreelvl1,#agreelvl3{
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 1px solid red;
+    font-size: 25px;
+    margin-left: 150px;
+    color: red;
+    font-weight: bolder;
+    margin-top: 20px;
+    }
+    #agree:hover,#agreelvl1:hover,#agreelvl3:hover{
+    background-color: rgb(126, 249, 126);
+    border: 2px solid rgb(83, 240, 83);
+    font-weight: bolder;
+    color: green;
+    cursor: pointer;
+    }
+    #Hint,#Hintlvl1,#Hintlvl3{
+    height: 40px;
+    width: 200px;
+    display: none;
+    border: 1px solid green;
+    font-size: 25px;
+    margin-left: 350px;
+    color: rgb(83, 240, 83);
+    font-weight: bolder;
+    margin-top: 20px;
+    }
+    .levels{
+    display: none;
+    align-content: center;
+    justify-content: space-evenly;
+    
+    font-size: 20px;
+    font-weight: bolder;
+    width: 900px;
+    height: 400px;
+    margin-top: 200px;
+    margin-left: 50px;
+    color: rgb(125, 255, 125);
+    border: 2px solid rgb(83, 240, 83);
+    border-radius: 20px;
+    }
+    .easy{
+    display:flex;
+    flex-direction: column;
+    font-size: 30px;
+    align-self: center;
+    color: rgb(100, 255, 100);
+    
+    border-radius: 100px;
+    }
+    
+    .medium{
+    display:flex;
+    flex-direction: column;
+    font-size: 30px;
+    align-self: center;
+    color: rgb(100, 255, 100);
+    
+    border-radius: 100px;
+    }
+    
+    .hard{
+    display:flex;
+    flex-direction: column;
+    font-size: 30px;
+    align-self: center;
+    color: rgb(100, 255, 100);
+    
+    border-radius: 100px;
+    }
+    
+    #easy , #hard ,#medium{
+    width: 100%;
+    
+    height: inherit;
+    
+    
+    
+    }
+    
+    .textLevels{
+    border-radius: 20px;
+    border: 2px solid rgb(83, 240, 83);
+    font-weight: bolder;
+    color: green;
+    text-align: center;
+    padding: 10px 30px;
+    margin-top: 20px;
+    
+    }
+    .textLevels:hover{
+    background-color: rgb(126, 249, 126);
+    border: 2px solid rgb(83, 240, 83);
+    font-weight: bolder;
+    color: green;
+    cursor: pointer;
+    
+    }
+    .imgLevels{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    }
+    .success{
+    padding-left: 30px;
+        width: 550px;
+        font-weight: bolder;
+        height: 470px;
+        padding-left: 50px;
+        padding-top: 10px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 150px;
+        color: rgb(83, 240, 83);
+        border: 1px solid rgb(125, 255, 125);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+       display: none;
+    }
+    .failure{
+    padding-left: 30px;
+        width: 550px;
+        font-weight: bolder;
+        height: 470px;
+        padding-left: 50px;
+        padding-top: 10px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 150px;
+        color: red;
+        border: 1px solid red;
+        font-family: 'Courier New', Courier, monospace;
+       display: none;
+       
+    }
+    #fail{
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 1px solid red;
+    font-size: 25px;
+    margin-left: 180px;
+    color: red;
+    font-weight: bolder;
+    margin-top: 20px;
+    }
+    #fail:hover{
+    background-color: rgb(255, 69, 69);
+    color: brown;
+    }
+    .signup{
+        padding-left: 30px;
+        width: 400px;
+        font-weight: bolder;
+        height: 770px;
+        padding-left: 50px;
+        padding-top: 10px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 290px;
+        color: rgb(83, 240, 83);
+        border: 1px solid rgb(125, 255, 125);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 40px;
+       border-radius: 20px;
+     
+    }
+    #sign,#signin{
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    padding-left: 20px;
+    color: green;
+    border: 1px solid rgb(126, 249, 126);
+    
+    }
+    #signingup,#signingin{
+    width: 150px;
+    height: 40px;
+    color: rgb(83, 240, 83);
+    background-color: transparent;
+    border: 2px solid rgb(100, 255, 100);
+     margin-left: 100px;
+      border-radius: 30px;
+       margin-top: 10px;
+       font-size: 20px;
+    }
+    #signingup:hover{
+    background-color: rgb(126, 249, 126);
+    color: green;}
+    #signingin:hover{
+    background-color: rgb(126, 249, 126);
+    color: green;
+    }
+    .signin{
+    padding-left: 30px;
+        width: 400px;
+        font-weight: bolder;
+        height: 770px;
+        padding-left: 50px;
+        padding-top: 10px;
+        word-spacing: 2px;
+        margin-top: 100px;
+        margin-left: 290px;
+        color: rgb(83, 240, 83);
+        border: 1px solid rgb(125, 255, 125);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 40px;
+       border-radius: 20px;
+}
 }

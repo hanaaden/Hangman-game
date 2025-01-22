@@ -64,6 +64,7 @@
     const signingin= document.getElementById('signingin')
     const signingup= document.getElementById('signingup')
     const level1=document.querySelector('.level1')
+    const level2= document.querySelector('.level2')
     const level3=document.querySelector('.level3')
     const agreelvl1= document.getElementById('agreelvl1')
     const agreelvl3= document.getElementById('agreelvl3')
@@ -488,48 +489,48 @@
             base.style.display='none'
         }
     agreee.onclick = function(){
-        pointlvl2 += 10;
+          // Increment points by 10
+          pointlvl2 += 10;
     
-        if (pointlvl2 >= 50) {
-            
-            success.style.display = 'block'; // Show success message
-            result.style.display = 'none'; // Hide other messages
-            input.style.display = 'none'; // Hide input
-            submit.disabled = true;
-            incorrect = 0;
-            tryWords = 0;
-            pointlvl1=0;
-            pointlvl2=0;
-            pointlvl3=0;
-        }
-        order.style.display = 'block';
-        intro.style.display = 'none';
-        box.style.display = 'block';
-        button.style.display = 'none';
-        typing.style.display = 'block';
-        typing.innerHTML = 'PLAYER NOW THE GAME IS ON';
-        input.style.display='block'
-        word.style.display='block'
-        submit.style.display='block'
-        warning.style.display='none'
-        result.style.display='none'
-        hint.style.display='block'
-        f1.innerHTML='__';
-        f2.innerHTML='__';
-        f3.innerHTML='__';
-        f4.innerHTML='__';
-        clear();
-    incorrect=0;
-        tryWords++;
-    lvl2();
-    hint.onclick= function (){
-        
-        const give=words[tryWords].hint;
-        alert(give)
-    }
-    
-    
-    }
+          if (pointlvl2 >= 50) {
+              
+              success.style.display = 'block'; // Show success message
+              result.style.display = 'none'; // Hide other messages
+              input.style.display = 'none'; // Hide input
+              submit.disabled = true;
+              typing.style.display='none';
+              f1.innerHTML = '__';
+              f2.innerHTML = '__';
+              f3.innerHTML = '__';
+              f4.innerHTML = '__';
+              incorrect = 0;
+              tryWords = 0;
+              pointlvl2=0;
+          } else {
+              // Proceed to the next part of Level 1
+              result.style.display = 'none';
+              warning.style.display = 'none';
+              order.style.display = 'block';
+              intro.style.display = 'none';
+              box.style.display = 'block';
+              button.style.display = 'none';
+              typing.style.display = 'block';
+              typing.innerHTML = 'PLAYER NOW YOU ARE LEVEL 1';
+              input.style.display = 'block';
+              word.style.display = 'block';
+              submit.style.display = 'block';
+              level2.style.display = 'block';
+              hint.style.display = 'block';
+              f1.innerHTML = '__';
+              f2.innerHTML = '__';
+              f3.innerHTML = '__';
+              f4.innerHTML = '__';
+              clear();
+              incorrect = 0;
+              tryWords++;
+              lvl2();
+          }
+      };
     agreeelvl1.onclick = function() {
         // Increment points by 10
         pointlvl1 += 10;
@@ -540,11 +541,14 @@
             resultlvl1.style.display = 'none'; // Hide other messages
             input.style.display = 'none'; // Hide input
             submitlvl1.disabled = true;
+            typing.style.display='none';
+            l1f1.innerHTML = '__';
+            l1f2.innerHTML = '__';
+            l1f3.innerHTML = '__';
+            l1f4.innerHTML = '__';
             incorrect = 0;
             tryWords = 0;
             pointlvl1=0;
-            pointlvl2=0;
-            pointlvl3=0;
         } else {
             // Proceed to the next part of Level 1
             resultlvl1.style.display = 'none';
@@ -579,10 +583,14 @@
             resultlvl3.style.display = 'none'; // Hide other messages
             input.style.display = 'none'; // Hide input
             submitlvl3.disabled = true;
+            typing.style.display='none';
+            l3f1.innerHTML='__';
+        l3f2.innerHTML='__';
+        l3f3.innerHTML='__';
+        l3f4.innerHTML='__';
+        l3f5.innerHTML='__';
             incorrect = 0;
             tryWords = 0;
-            pointlvl1=0;
-            pointlvl2=0;
             pointlvl3=0;
         }else
 {    resultlvl3.style.display='none'
@@ -613,7 +621,7 @@
         
         failure.style.display = 'none';
         intro.style.display = 'block';
-        typing.style.display = 'block';
+        typing.style.display = 'none';
         button.style.display = 'block';
         incorrect = 0;
         tryWords = 0;

@@ -13,7 +13,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow-y: auto;
+    overflow-x: auto;
 }
 body {
     color: rgb(83, 240, 83);
@@ -733,7 +733,7 @@ padding-left: 30px;
         margin: 0;
         padding: 0;
         height: 100vh;
-        overflow-y: auto;
+        overflow-x: auto;
     }
     .typing {
         font-size: 20px;

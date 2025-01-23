@@ -1613,5 +1613,7 @@ padding-left: 30px;
         font-family: 'Courier New', Courier, monospace;
         font-size: 40px;
        border-radius: 20px;
+
+       /* responsive la ka dhigay */
 }
 }

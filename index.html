@@ -3,186 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangman Game</title>
+    <title>Whimsical Word Wanderer</title>
     <link rel="stylesheet" href="hangman.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
-    <video autoplay muted loop id="backgroundVideo">
-        <source src="bgvideo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <audio id="gameAudio" src="Background.mp3" loop preload="auto"></audio>
-    <div class="typing">WELCOME TO THE HANGMAN GAME</div>
-    <div class="signup" style="display: none;">
-        <p  class="regis">REGISTER</p>
-        <p>Username</p>
-        <P><input id="sign" type="text" placeholder="Username" name="user" required style="background-color: black;"></P>
-        <p>Email</p>
-        <P><input id="sign"  type="text" placeholder="example@gmail.com" name="email" required  style="background-color: black;"></P>
-        <p>Password</p>
-        <P><input id="sign"  type="password" placeholder="**********" name="pass" required  style="background-color: black;"></P>
-        <button id="signingup">Sign Up</button>
-    </div>
-    
-    <div class="signin" >
-        <p  id="wellcome">WELCOME BACK</p>
-        <p>Email/username</p>
-        <P><input id="signin"  type="text" placeholder="----------------" name="email" required  style="background-color: black;"></P>
-        <p>Password</p>
-        <P><input id="signin"  type="password" placeholder="**********" name="pass" required  style="background-color: black;"></P>
-        <button id="signingin">LOG IN</button>
-        <p>Don't have account? <a href="#" style="color: rgb(83, 240, 83);" id="REGISTERa">REGISTER</a></p>
-    </div>
-    <div class="intro" style="display: none;">
-        <div><img id="smiling" src="elien.webp" > </div>
-        Welcome to Hangman! In this game, you'll be guessing a hidden word one letter at a time. Each time you guess a letter, if it’s in the word, it will be revealed in its correct position. But be careful! You have a limited number of incorrect guesses—typically eleven—before the hangman is fully drawn. The goal is to guess the word before your attempts run out. So, think carefully, make your guesses, and enjoy the challenge of uncovering the mystery word! Ready to play? Let's get started!
-        <button id="btn">Start</button>
-    </div>
-    <!-- levels -->
-    <div class="levels" >
-   
-        <div  class="easy">
-            <div class="imgLevels">   <img id="easy" src="smiling2.webp"></div>
-               <div class="textLevels" >EASY</div>
-           </div>
-           <div class="medium"> 
-           
-           <div class="imgLevels" > <img id="medium" style="width: 200px;" src="medium.png"></div>
-           <div class="textLevels">MEDIUM</div>
-           </div>
-           <div class="hard">
-          
-           <div class="imgLevels"> <img id="hard" src="angryhard.png"></div>
-           <div class="textLevels" >HARD</div>
-           </div>
-     </div>
-      <!-- level1    -->
-    <div class="level1" style="display: none;">
-        <div class="order1" style="display: none;">The level 1 words is here</div>
-    <div class="wordslvl1" style="display: none;">
-        <span id="l1f1">__</span>
-        <span id="l1f2">__</span>
-        <span id="l1f3">__</span>
-        <span id="l1f4">__</span>
-      
-    </div>
-    <button id="Hintlvl1"  style="background-color: black;">HINT</button>
-    <input type="text" id="guesslv1" style="display: none;" placeholder="enter letters">
-    <button id="submitlv1" style="display: none;">Enter</button>
-    </div>
-    <!-- level2 -->
-    <div class="level2">
-        <div class="order" style="display: none;">THE level 2 WORD IS HERE</div>
-    <div class="word" style="display: none; ">
-        <div>
-        <span id="f1">__</span>
-        <span id="f2">__</span>
-        <span id="f3">__</span>
-        <span id="f4">__</span>
+
+    <audio id="gameAudio" src="forest_music.mp3" loop preload="auto"></audio>
+    <div class="container">
+        <div id="customAlert" class="custom-alert" style="display: none;">
+            <p id="alertMessage"></p>
         </div>
-        <div>
-           
+
+        <div class="signup screen" style="display: none;">
+            <h1>Join the Adventure!</h1>
+            <input type="text" id="sign" placeholder="Your Explorer Name">
+            <button id="signingup">Embark!</button>
+            <p>Already an explorer? <a href="#" id="showSignin">Sign In Here</a></p>
         </div>
-       
-    </div>
-    <button id="Hint"  style="background-color: black;">HINT</button>
-    <input type="text" id="guess" placeholder="enter letters" style="display: none;">
-    <button id="submit" style="display: none;">Enter</button>
-    </div>
-    <!-- level3 -->
-    <div class="level3">
-        <div class="order3" style="display: none;">THE level 3 WORD IS HERE</div>
-    <div class="wordslvl3" style="display: none;">
-        <span id="l3f1">__</span>
-        <span id="l3f2">__</span>
-        <span id="l3f3">__</span>
-        <span id="l3f4">__</span>
-        <span id="l3f5">__</span>
-    </div>
-    <button id="Hintlvl3"  style="background-color: black;">HINT</button>
-    <input type="text" id="guesslvl3" placeholder="enter letters" style="display: none;">
-    <button id="submitlvl3" style="display: none;">Enter</button>
-    </div>
-  
-    <!-- after gussing the correct word level1 -->
-    <div class="resultlvl1">  <div class="welldone">WELLDONE</div>
-        <p>
-            <img  id="welldoneimg" src="good.webp">
-        </p> 
-        <button id="agreeelvl1">Next</button>
-    </div>
-      <!-- after gussing the correct word level2-->
-      <div class="result">  <div class="welldone">WELLDONE</div>
-      <p>
-          <img   id="welldoneimg" src="good.webp">
-      </p> 
-      <button id="agreee">Next</button>
-  </div>
-    <!-- after gussing the correct word level-->
-    <div class="resultlvl3">  <div class="welldone">WELLDONE</div>
-        <p>
-            <img  id="welldoneimg" src="good.webp">
-        </p> 
-        <button id="agreeelvl3">Next</button>
-    </div>
-   <!-- warning level1  -->
-    <div class="warning1" style="display: none;">
-        <p class="note">NOTICE</p>
-        <img class="warningimg" src="redr.png">
-        <p>After you guess the all letters of the word  make sure that you enter
-            the complete word at ones for example(drive) word 
-            <br>
-            all levels guess chances 11  
-        </p>
-        <button id="agreelvl1">AGREE</button>
-    </div>
-    <!-- warning level2 -->
-    <div class="warning">
-        <p class="note">NOTICE</p>
-        <img class="warningimg" src="redr.png">
-        <p>After you guess the all letters of the word  make sure that you enter
-            the complete word at ones for example(drive) word
-            <br>
-            all levels guess chances 11 
-        </p>
-        <button id="agree">AGREE</button>
-    </div>
-    <!-- warning level3 -->
-    <div class="warning3">
-        <p class="note">NOTICE</p>
-        <img class="warningimg" src="redr.png">
-        <p>After you guess the all letters of the word  make sure that you enter
-            the complete word at ones for example(drive) word
-            <br>
-            all levels guess chances 11 
-        </p>
-        <button id="agreelvl3">AGREE</button>
-    </div>
-    <div class="success" style="display: none;">
-        <p style="font-size: 40px; padding-left: 10px;">YOU MADE IT DUDE</p>
-        <img style="height: 200px; width: 200px; margin-left: 140px;" src="good.webp" alt="Success Image">
-        <button id="back">GO LEVELS</button>
-    </div>
-    <div class="failure" style="font-size: 35px; padding-left: 15px;"> <p>OOPS IT DIDN'T WORK</p>
-        <img id="failimg" src="redsadail.png">
-        <button id="fail" >TRY AGAIN</button>
+
+        <div class="signin screen" style="display: none;">
+            <h1>Welcome Back, Explorer!</h1>
+            <input type="text" id="signin" placeholder="Your Explorer Name">
+            <button id="signingin">Continue Journey</button>
+            <p>New to the forest? <a href="#" id="showSignup">Register Now</a></p>
+        </div>
+
+        <div class="intro screen">
+            <h1 class="typing">HELLO, EXPLORER!</h1>
+            <button id="btn">START</button> <p style="margin-top: 20px;"><a href="#" id="showRegister">New to the journey? Register/Sign In</a></p>
+        </div>
+
+        <div class="levels screen" style="display: none;">
+            <h1>CHOOSE YOUR PATH</h1>
+            <button class="level-button easy">MOSS PATH (4 Letters)</button>
+            <button class="level-button medium">FOREST TRAIL (4 Letters)</button>
+            <button class="level-button hard">MOUNTAIN PEAK (5-6 Letters)</button>
+        </div>
+
+        <div class="warning screen" style="display: none;">
+            <h2>FOREST TRAIL: MEDIUM</h2>
+            <p>Ready to navigate the woods? Find 5 hidden words to win!</p>
+            <button id="agree">LET'S GO!</button>
+        </div>
+        <div class="warning1 screen" style="display: none;">
+            <h2>MOSS PATH: EASY</h2>
+            <p>A gentle start! Discover 5 hidden words to win!</p>
+            <button id="agreelvl1">LET'S GO!</button>
+        </div>
+        <div class="warning3 screen" style="display: none;">
+            <h2>MOUNTAIN PEAK: HARD</h2>
+            <p>The ultimate climb! Uncover 5 hidden words to win!</p>
+            <button id="agreelvl3">LET'S GO!</button>
+        </div>
+
+        <div class="game-area" style="display: none;">
+            <div class="hangman-display">
+                <div class="base"></div>
+                <div class="wire1"></div>
+                <div class="wire11"></div>
+                <div class="wirelong"></div>
+                <div class="face"></div>
+                <div class="tire1"></div>
+                <div class="tire2"></div>
+                <div class="lefthand"></div>
+                <div class="righthand"></div>
+                <div class="leftleg"></div>
+                <div class="rightleg"></div>
+            </div>
+
+            <div class="game-info">
+                <h2 class="typing"></h2> <div class="wordslvl1 word-display" style="display: none;">
+                    <span id="l1f1">____</span><span id="l1f2">____</span><span id="l1f3">____</span><span id="l1f4">____</span>
+                </div>
+                <div class="word word-display" style="display: none;">
+                    <span id="f1">____</span><span id="f2">____</span><span id="f3">____</span><span id="f4">____</span>
+                </div>
+                <div class="wordslvl3 word-display" style="display: none;">
+                    <span id="l3f1">____</span><span id="l3f2">____</span><span id="l3f3">____</span><span id="l3f4">____</span><span id="l3f5">____</span>
+                    </div>
+
+                <input type="text" id="guess" placeholder="Guess a letter or word" maxlength="6" style="display: none;">
+                <input type="text" id="guesslv1" placeholder="Guess a letter or word" maxlength="4" style="display: none;">
+                <input type="text" id="guesslvl3" placeholder="Guess a letter or word" maxlength="6" style="display: none;">
+
+                <button id="submit" class="submit-btn" style="display: none;">GUESS!</button>
+                <button id="submitlv1" class="submit-btn" style="display: none;">GUESS!</button>
+                <button id="submitlvl3" class="submit-btn" style="display: none;">GUESS!</button>
+
+                <button id="Hint" class="hint-btn" style="display: none;">NEED A CLUE?</button>
+                <button id="Hintlvl1" class="hint-btn" style="display: none;">NEED A CLUE?</button>
+                <button id="Hintlvl3" class="hint-btn" style="display: none;">NEED A CLUE?</button>
+            </div>
+        </div>
+
+        <div class="result screen" style="display: none;">
+            <h2>WORD DISCOVERED!</h2>
+            <p>Fantastic! You earned 10 leaves.</p>
+            <button id="agreee">NEXT CHALLENGE</button>
+        </div>
+        <div class="resultlvl1 screen" style="display: none;">
+            <h2>WORD DISCOVERED!</h2>
+            <p>Fantastic! You earned 10 leaves.</p>
+            <button id="agreeelvl1">NEXT CHALLENGE</button>
+        </div>
+        <div class="resultlvl3 screen" style="display: none;">
+            <h2>WORD DISCOVERED!</h2>
+            <p>Fantastic! You earned 10 leaves.</p>
+            <button id="agreeelvl3">NEXT CHALLENGE</button>
+        </div>
+
+        <div class="failure screen" style="display: none;">
+            <h1>OH NO!</h1>
+            <p>The creature is fully formed! The hidden word was: <span id="failedWord"></span></p>
+            <button id="fail">TRY AGAIN</button>
+        </div>
+
+        <div class="success screen" style="display: none;">
+            <h1>PATH CONQUERED!</h1>
+            <p>You've mastered the challenges! Congratulations, great explorer!</p>
+            <button id="back">EXPLORE AGAIN</button>
+        </div>
+
     </div>
 
-   
-    
-    <div class="box" style="display: none;">
-        <div class="tire2" style="display: none;"></div>
-        <div class="tire1" style="display: none;"></div>
-        <div class="face" style="display: none;"></div>
-        <div class="wirelong" style="display: none;"></div>
-        <div class="wire1" style="display: none;"></div>
-        <div class="lefthand" style="display: none;"></div>
-        <div class="righthand" style="display: none;"></div>
-        <div class="wire11" style="display: none;"></div>
-        <div class="leftleg" style="display: none;"></div>
-        <div class="rightleg" style="display: none;"></div>
-        <div class="base" style="display: none;"></div>
-    </div>
     <script src="hangman.js"></script>
 </body>
 </html>

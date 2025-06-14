@@ -1,1619 +1,478 @@
-#backgroundVideo {
-    position: fixed; /* Fixes the video in place */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the video covers the entire area */
-    z-index: -1; /* Places the video behind other content */
+body {
+    margin: 0;
+    font-family: 'Indie Flower', cursive; /* Playful, handwritten feel */
+    background: linear-gradient(to bottom right, #a8e063, #56ab2f); /* Soft green gradient */
+    color: #4a4a4a; /* Dark gray for text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Ensure other content is visible */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow-x: auto;
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    border: 3px solid #82b74b; /* Forest green border */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 650px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
 }
-body {
-    color: rgb(83, 240, 83);
+
+/* Custom Alert Styling */
+.custom-alert {
+    position: fixed; /* Position over everything */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 25px 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure it's on top */
+    min-width: 280px;
+    max-width: 90%;
+    text-align: center;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.4em;
+    color: #3b5a26;
+    border: 3px solid #82b74b;
+    animation: fadeInOut 2.5s forwards; /* Animation for pop-up */
+    pointer-events: none; /* Allow clicks to pass through if no button */
 }
-.note{
-    font-size: 50px; 
-    padding-left: 160px;
+
+.custom-alert.error {
+    background-color: #ffe0e0;
+    border-color: #d32f2f;
+    color: #d32f2f;
 }
-.warningimg{
-    width: 150px; height:150px; border-radius: 100px; margin-left: 170px; margin-top: -30px;
+
+.custom-alert.success {
+    background-color: #e0ffe0;
+    border-color: #56ab2f;
+    color: #56ab2f;
+}
+
+.custom-alert.info {
+    background-color: #e0f0ff;
+    border-color: #1976d2;
+    color: #1976d2;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -60%); } /* Start slightly above and invisible */
+    20% { opacity: 1; transform: translate(-50%, -50%); } /* Fade in and settle */
+    80% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -40%); display: none; } /* Fade out and move slightly down */
+}
+
+
+/* General Screen Styling */
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.screen h1 {
+    font-family: 'Cabin Sketch', cursive; /* More whimsical for titles */
+    font-size: 2.5em;
+    color: #3b5a26; /* Dark forest green */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.screen h2 {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.8em;
+    color: #568203; /* Olive green */
+    margin-bottom: 15px;
+}
+
+.screen p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #6a6a6a;
+    line-height: 1.4;
+}
+
+/* Buttons */
+button {
+    background-color: #82b74b; /* Forest green */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px 5px;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 25px; /* Pill-shaped buttons */
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover:not(:disabled) {
+    background-color: #568203; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Input Fields */
+input[type="text"] {
+    background-color: #f0f0f0; /* Light gray background */
+    border: 2px solid #82b74b; /* Forest green border */
+    color: #3b5a26; /* Dark green text */
+    padding: 12px;
+    margin-bottom: 20px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.1em;
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* Typing Effect for H1 */
+.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3s steps(40, end) forwards;
+    width: 0;
+    font-size: 1.8em;
+    border-right: 0.15em solid #a8e063; /* Blinking "leaf" cursor */
+    box-sizing: border-box;
+}
+
+/* Typing animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Blinking cursor animation */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #a8e063; }
 }
 
 .typing {
-    font-size: 70px;
-    padding-left: 200px;
-    width: 1203px;
-    overflow: hidden;
-    white-space: nowrap;
-    font-family: 'Courier New', Courier, monospace;
-    animation: typing 2s steps(20, end), .2s steps(12, end);
-}
-@keyframes typing {
-    from { width: 0; }
-}
-#wellcome{
-    font-size: 30px; 
-    padding-left: 60px;
-}
-.regis{
-    font-size: 30px; padding-left: 100px;
-}
-#smiling{
-    width: 20px;
-     height: 20px;
-     margin-left: 360px;
-}
-.box {
-    margin-top: -480px;
-    margin-left: 1000px;
-    width: 400px;
-    height: 500px;
-    border: 1px solid rgb(83, 240, 83);
-}
-.order,.order1,.order3 {
-    font-size: 30px;
-    width: 400px;
-    padding-left: 300px;
-    padding-top: 120px;
-}
-#btn {
-    margin-left: 300px;
-    margin-top: 26px;
-    border: 1px solid rgb(83, 240, 83);
-    background-color: transparent;
-    width: 200px;
-    height: 60px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 50px;
-    color: rgb(83, 240, 83);
-}
-#btn:hover {
-    background-color: rgb(83, 240, 83);
-    color: darkgreen;
-    cursor: pointer;
-}
-.intro {
-    padding-left: 30px;
-    width: 900px;
-    height: 430px;
-    padding-top: 20px;
-    word-spacing: 2px;
-    margin-top: 100px;
-    margin-left: 320px;
-    border: 1px solid rgb(126, 249, 126);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-}
-.face {
-    width: 100px;
-    height: 100px;
-    border: 2px solid rgb(126, 249, 126);
-    margin-left: 120px;
-    border-radius: 150px;
-}
-.wire1 {
-width: 1px;
-margin-left: 170px;
-margin-top: -2px;
-height: 50px;
-border: 1px solid rgb(83, 240, 83);
-}
-.wire11 {
-width: 1px;
-margin-left: 170px;
-height: 70px;
-border: 1px solid rgb(83, 240, 83);
-}
-.lefthand {
-width: 50px;
-margin-left: 170px;
-height: 1px;
-border: 1px solid rgb(83, 240, 83);
-transform: rotate(45deg);
-}
-.righthand {
-width: 50px;
-margin-left: 120px;
-height: 1px;
-border: 1px solid rgb(83, 240, 83);
-transform: rotate(-45deg);
-}
-.leftleg {
-width: 50px;
-margin-left: 170px;
-height: 1px;
-border: 1px solid rgb(83, 240, 83);
-transform: rotate(45deg);
-}
-.rightleg {
-width: 50px;
-margin-left: 120px;
-height: 1px;
-border: 1px solid rgb(83, 240, 83);
-transform: rotate(-45deg);
-}
-.tire1 {
-margin-top: 0px;
-margin-left: 170px;
-width: 1px;
-height: 60px;
-border: 1px solid rgb(83, 240, 83);
-}
-.tire2 {
-margin-top: 50px;
-margin-left: 170px;
-width: 160px;
-height: 1px;
-border: 1px solid rgb(83, 240, 83);
-}
-.base {
-margin-top: -30px;
-margin-left: 200px;
-width: 1px;
-height: 260px;
-border: 1px solid rgb(83, 240, 83);
-transform: rotate(90deg);
-}
-.wirelong {
-margin-left: 135px;
-margin-top: 35px;
-width: 400px;
-height: 1px;
-border: 1px solid rgb(83, 240, 83);
-transform: rotate(90deg);
-}
-.word,.wordslvl1,.wordslvl3 {
-width: 200px;
-padding-left: 20px;
-margin-top: 20px;
-margin-left: 350px;
-height: 40px;
-font-size: 30px;
-color: rgb(83, 240, 83);
-border: 1px solid rgb(83, 240, 83);
-}
-#guess,#guesslv1,#guesslvl3{
-margin-top: 200px;
-background-color: transparent;
-color: rgb(83, 240, 83);
-font-family: 'Courier New', Courier, monospace;
-padding-left: 10px;
-width: 200px;
-height: 30px;
-margin-left: 50px;
-border: 2px solid rgb(83, 240, 83);
-}
-#submit,#submitlv1,#submitlvl3 {
-margin-left: 50px;
-margin-top: 80px;
-border: 1px solid rgb(83, 240, 83);
-background-color: transparent;
-width: 200px;
-height: 40px;
-font-family: 'Courier New', Courier, monospace;
-font-size: 30px;
-color: rgb(83, 240, 83);
-}
-#submit:hover,#submitlv1:hover,#submitlvl3:hover {
-background-color: rgb(83, 240, 83);
-color: darkgreen;
-cursor: pointer;
-}
-.result,.resultlvl1,.resultlvl3{
-padding-left: 10px;
-    width: 600px;
-    height: 350px;
-    padding-left: 100px;
-    padding-top: 130px;
-    word-spacing: 2px;
-    margin-top: 100px;
-    margin-left: 350px;
-    border: 1px solid rgb(126, 249, 126);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 50px;
-    display: none;
-  
-}
-#welldoneimg{
-    height: 200px; width: 200px; margin-left: 140px;
-}
-.welldone{
-margin-top: -100px;
-margin-left: 140px;
-}
-#failimg{
-    width: 200px; height:200px; border-radius: 100px; margin-left: 170px; margin-top: -30px;
-}
-#smiling{
-border-radius: 95px;
-width: 150px;
-height: 150px;
-margin-left: 300px;
-}
-#agreee,#agreeelvl1,#agreeelvl3,#back{
-height: 40px;
-width: 200px;
-background-color: transparent;
-border: 1px solid green;
-font-size: 25px;
-margin-left: 145px;
-color: green;
-font-weight: bolder;
-margin-top: 20px;
-}
-#back:hover,#agreee:hover,#agreeelvl1:hover,#agreeelvl3:hover{
-background-color: rgb(126, 249, 126);
-border: 2px solid rgb(83, 240, 83);
-font-weight: bolder;
-color: green;
-cursor: pointer;
-}
-.warning,.warning1,.warning3{
-padding-left: 30px;
-    width: 550px;
-    font-weight: bolder;
-    height: 489px;
-    padding-left: 50px;
-    padding-top: 10px;
-    word-spacing: 2px;
-    margin-top: 100px;
-    margin-left: 450px;
-    color: red;
-    border: 1px solid red;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    display: none;
+    animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
-#agree,#agreelvl1,#agreelvl3{
-height: 40px;
-width: 200px;
-background-color: transparent;
-border: 1px solid red;
-font-size: 25px;
-margin-left: 150px;
-color: red;
-font-weight: bolder;
-margin-top: 20px;
-}
-#agree:hover,#agreelvl1:hover,#agreelvl3:hover{
-background-color: rgb(126, 249, 126);
-border: 2px solid rgb(83, 240, 83);
-font-weight: bolder;
-color: green;
-cursor: pointer;
-}
-#Hint,#Hintlvl1,#Hintlvl3{
-height: 40px;
-width: 200px;
-display: none;
-border: 1px solid green;
-font-size: 25px;
-margin-left: 350px;
-color: rgb(83, 240, 83);
-font-weight: bolder;
-margin-top: 20px;
-}
-.levels{
-display: none;
-align-content: center;
-justify-content: space-evenly;
 
-font-size: 20px;
-font-weight: bolder;
-width: 900px;
-height: 400px;
-margin-top: 200px;
-margin-left: 300px;
-color: rgb(125, 255, 125);
-border: 2px solid rgb(83, 240, 83);
-border-radius: 20px;
+/* Level Buttons */
+.level-button {
+    background-color: #a8e063; /* Lighter green for Easy */
+    border: none;
 }
-.easy{
-display:flex;
-flex-direction: column;
-font-size: 30px;
-align-self: center;
-color: rgb(100, 255, 100);
-
-border-radius: 100px;
+.level-button.medium {
+    background-color: #82b74b; /* Medium green for Medium */
+}
+.level-button.hard {
+    background-color: #56ab2f; /* Darker green for Hard */
+}
+.level-button:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.05); /* More pronounced hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.medium{
-display:flex;
-flex-direction: column;
-font-size: 30px;
-align-self: center;
-color: rgb(100, 255, 100);
 
-border-radius: 100px;
-}
-
-.hard{
-display:flex;
-flex-direction: column;
-font-size: 30px;
-align-self: center;
-color: rgb(100, 255, 100);
-
-border-radius: 100px;
-}
-
-#easy , #hard ,#medium{
-width: 100%;
-
-height: inherit;
-
-
-
-}
-
-.textLevels{
-border-radius: 20px;
-border: 2px solid rgb(83, 240, 83);
-font-weight: bolder;
-color: green;
-text-align: center;
-padding: 10px 30px;
-margin-top: 20px;
-
-}
-.textLevels:hover{
-background-color: rgb(126, 249, 126);
-border: 2px solid rgb(83, 240, 83);
-font-weight: bolder;
-color: green;
-cursor: pointer;
-
-}
-.imgLevels{
-width: 150px;
-height: 150px;
-border-radius: 50%;
-}
-.success{
-padding-left: 30px;
-    width: 550px;
-    font-weight: bolder;
-    height: 470px;
-    padding-left: 50px;
-    padding-top: 10px;
-    word-spacing: 2px;
-    margin-top: 100px;
-    margin-left: 450px;
-    color: rgb(83, 240, 83);
-    border: 1px solid rgb(125, 255, 125);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-   display: none;
-}
-.failure{
-padding-left: 30px;
-    width: 550px;
-    font-weight: bolder;
-    height: 470px;
-    padding-left: 50px;
-    padding-top: 10px;
-    word-spacing: 2px;
-    margin-top: 100px;
-    margin-left: 450px;
-    color: red;
-    border: 1px solid red;
-    font-family: 'Courier New', Courier, monospace;
-   display: none;
-   
-}
-#fail{
-height: 40px;
-width: 200px;
-background-color: transparent;
-border: 1px solid red;
-font-size: 25px;
-margin-left: 180px;
-color: red;
-font-weight: bolder;
-margin-top: 20px;
-}
-#fail:hover{
-background-color: rgb(255, 69, 69);
-color: brown;
-}
-.signup{
-padding-left: 30px;
-    width: 400px;
-    font-weight: bolder;
-    height: 480px;
-    padding-left: 50px;
-    padding-top: 10px;
-    word-spacing: 2px;
-    margin-top: 100px;
-    margin-left: 490px;
-    color: rgb(83, 240, 83);
-    border: 1px solid rgb(125, 255, 125);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-   border-radius: 20px;
- 
-}
-#sign,#signin{
-width: 300px;
-height: 40px;
-border-radius: 20px;
-padding-left: 20px;
-color: green;
-border: 1px solid rgb(126, 249, 126);
-
-}
-#signingup,#signingin{
-width: 150px;
-height: 40px;
-color: rgb(83, 240, 83);
-background-color: transparent;
-border: 2px solid rgb(100, 255, 100);
- margin-left: 100px;
-  border-radius: 30px;
-   margin-top: 10px;
-   font-size: 20px;
-}
-#signingup:hover{
-background-color: rgb(126, 249, 126);
-color: green;}
-#signingin:hover{
-background-color: rgb(126, 249, 126);
-color: green;
-}
-.signin{
-padding-left: 30px;
-    width: 400px;
-    font-weight: bolder;
-    height: 480px;
-    padding-left: 50px;
-    padding-top: 10px;
-    word-spacing: 2px;
-    margin-top: 100px;
-    margin-left: 490px;
-    color: rgb(83, 240, 83);
-    border: 1px solid rgb(125, 255, 125);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-   border-radius: 20px;
-}
-@media (max-width: 768px) and (min-width: 481px) {
-    /* Styles for devices like iPad Mini or iPhone 6/7/8 */
-    .typing {
-        font-size: 30px;
-        padding-left: 30px;
-        width: 1003px;
-        overflow: hidden;
-        white-space: nowrap;
-        font-family: 'Courier New', Courier, monospace;
-        animation: typing 2s steps(20, end), .2s steps(12, end);
-    }
-    .signup{
-        padding-left: 30px;
-            width: 400px;
-            font-weight: bolder;
-            height: 480px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 130px;
-            color: rgb(83, 240, 83);
-            border: 1px solid rgb(125, 255, 125);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-           border-radius: 20px;
-         
-        }
-        #sign,#signin{
-        width: 300px;
-        height: 40px;
-        border-radius: 20px;
-        padding-left: 20px;
-        color: green;
-        border: 1px solid rgb(126, 249, 126);
-        
-        }
-        #welldoneimg{
-            height: 200px; width: 200px; 
-           margin-top: 20px;
-           margin-left: 40px;
-            
-        }
-        .welldone{
-        margin-top: -100px;
-        margin-left: 40px;
-        }
-        #signingup,#signingin{
-        width: 150px;
-        height: 40px;
-        color: rgb(83, 240, 83);
-        background-color: transparent;
-        border: 2px solid rgb(100, 255, 100);
-         margin-left: 100px;
-          border-radius: 30px;
-           margin-top: 10px;
-           font-size: 20px;
-        }
-        #signingup:hover{
-        background-color: rgb(126, 249, 126);
-        color: green;}
-        #signingin:hover{
-        background-color: rgb(126, 249, 126);
-        color: green;
-        }
-        .signin{
-        padding-left: 30px;
-            width: 400px;
-            font-weight: bolder;
-            height: 480px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left:130px;
-            color: rgb(83, 240, 83);
-            border: 1px solid rgb(125, 255, 125);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-           border-radius: 20px;
-        }
-        .intro {
-            padding-left: 30px;
-            width: 400px;
-            height: 750px;
-            padding-top: 20px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 120px;
-            border: 1px solid rgb(126, 249, 126);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-        }
-        #smiling{
-            width: 100px;
-             height: 100px;
-             margin-left: 60px;
-        }
-        
-            #btn {
-                margin-left: 100px;
-                margin-top: 26px;
-                border: 1px solid rgb(83, 240, 83);
-                background-color: transparent;
-                width: 200px;
-                height: 60px;
-                font-family: 'Courier New', Courier, monospace;
-                font-size: 50px;
-                color: rgb(83, 240, 83);
-            }
-            #btn:hover {
-                background-color: rgb(83, 240, 83);
-                color: darkgreen;
-                cursor: pointer;
-            }
-            .levels{
-                display: none;
-                align-content: center;
-                justify-content: space-evenly;
-                
-                font-size: 20px;
-                font-weight: bolder;
-                width: 700px;
-                height: 400px;
-                margin-top: 200px;
-                margin-left: 30px;
-                color: rgb(125, 255, 125);
-                border: 2px solid rgb(83, 240, 83);
-                border-radius: 20px;
-                }
-                .easy{
-                display:flex;
-                flex-direction: column;
-                font-size: 30px;
-                align-self: center;
-                color: rgb(100, 255, 100);
-                
-                border-radius: 100px;
-                }
-                
-                .medium{
-                display:flex;
-                flex-direction: column;
-                font-size: 30px;
-                align-self: center;
-                color: rgb(100, 255, 100);
-                
-                border-radius: 100px;
-                }
-                
-                .hard{
-                display:flex;
-                flex-direction: column;
-                font-size: 30px;
-                align-self: center;
-                color: rgb(100, 255, 100);
-                
-                
-}
-.warning,.warning1,.warning3{
-    padding-left: 30px;
-        width: 550px;
-        font-weight: bolder;
-        height: 489px;
-        padding-left: 50px;
-        padding-top: 10px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 120px;
-        color: red;
-        border: 1px solid red;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 20px;
-        display: none;
-    }
-    .box {
-        margin-top: -170px;
-        margin-left: 290px;
-        width: 400px;
-        height: 500px;
-        border: 1px solid rgb(83, 240, 83);
-    }
-    .success{
-        padding-left: 30px;
-            width: 550px;
-            font-weight: bolder;
-            height: 470px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 120px;
-            color: rgb(83, 240, 83);
-            border: 1px solid rgb(125, 255, 125);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-           display: none;
-        }
-        .failure{
-        padding-left: 30px;
-            width: 550px;
-            font-weight: bolder;
-            height: 470px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 120px;
-            color: red;
-            border: 1px solid red;
-            font-family: 'Courier New', Courier, monospace;
-           display: none;
-           
-        }
-       
-            .result,.resultlvl1,.resultlvl3{
-                padding-left: 10px;
-                    width: 400px;
-                    height: 350px;
-                    padding-left: 100px;
-                    padding-top: 130px;
-                    word-spacing: 2px;
-                    margin-top: 100px;
-                    margin-left: 120px;
-                    border: 1px solid rgb(126, 249, 126);
-                    font-family: 'Courier New', Courier, monospace;
-                    font-size: 50px;
-                    display: none;
-                  
-                }
-                #agreee,#agreeelvl1,#agreeelvl3,#back{
-                    height: 40px;
-                    width: 200px;
-                    background-color: transparent;
-                    border: 1px solid green;
-                    font-size: 25px;
-                    margin-left: 45px;
-                    color: green;
-                    font-weight: bolder;
-                    margin-top: 20px;
-                    }
-}
-@media (max-width: 480px) {
-    /* Styles for small phones like iPhone SE, or compact Android phones */
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        overflow-x: auto;
-    }
-    .typing {
-        font-size: 20px;
-        padding-left: 30px;
-        width: 800px;
-        overflow: hidden;
-        white-space: nowrap;
-        font-family: 'Courier New', Courier, monospace;
-        animation: typing 2s steps(20, end), .2s steps(12, end);
-    }
-    .signup{
-        padding-left: 30px;
-            width: 270px;
-            font-weight: bolder;
-            height: 480px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 30px;
-            color: rgb(83, 240, 83);
-            border: 1px solid rgb(125, 255, 125);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-           border-radius: 20px;
-         
-        }
-        #sign,#signin{
-        width: 190px;
-        height: 40px;
-        border-radius: 20px;
-        padding-left: 20px;
-        color: green;
-        border: 1px solid rgb(126, 249, 126);
-        
-        }
-        #signingup,#signingin{
-        width: 150px;
-        height: 40px;
-        color: rgb(83, 240, 83);
-        background-color: transparent;
-        border: 2px solid rgb(100, 255, 100);
-         margin-left: 30px;
-          border-radius: 30px;
-           margin-top: 10px;
-           font-size: 20px;
-        }
-        #signingup:hover{
-        background-color: rgb(126, 249, 126);
-        color: green;}
-        #signingin:hover{
-        background-color: rgb(126, 249, 126);
-        color: green;
-        }
-        .signin{
-            padding-left: 30px;
-            width: 270px;
-            font-weight: bolder;
-            height: 480px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 30px;
-            color: rgb(83, 240, 83);
-            border: 1px solid rgb(125, 255, 125);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-           border-radius: 20px;
-        }
-        #wellcome{
-            font-size: 20px;
-            padding-left: 20px;
-        }
-        .regis{
-            font-size: 20px;
-            padding-left: 20px;
-        }
-        .intro {
-            padding-left: 30px;
-            width: 260px;
-            height: 570px;
-            padding-top: 20px;
-            word-spacing: 2px;
-            margin-top: 50px;
-            margin-left: 30px;
-            border: 1px solid rgb(126, 249, 126);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 15px;
-        }
-        #smiling{
-            width: 100px;
-             height: 100px;
-             margin-left: 60px;
-        }
-        
-            #btn {
-                margin-left: 50px;
-                margin-top: 40px;
-                border: 1px solid rgb(83, 240, 83);
-                background-color: transparent;
-                width: 100px;
-                height: 60px;
-                font-family: 'Courier New', Courier, monospace;
-                font-size: 30px;
-                color: rgb(83, 240, 83);
-            }
-            #btn:hover {
-                background-color: rgb(83, 240, 83);
-                color: darkgreen;
-                cursor: pointer;
-            }
-            
-            .levels{
-                display: flex;
-                flex-direction: column;
-                align-content: center;
-                justify-content: space-evenly;
-                display: none;
-                font-size: 15px;
-                font-weight: bolder;
-                width: 270px;
-                height: 600px;
-                margin-top: 40px;
-                margin-left: 47px;
-                color: rgb(125, 255, 125);
-                border: 2px solid rgb(83, 240, 83);
-                border-radius: 20px;
-                }
-                .easy{
-                display:flex;
-                flex-direction: column;
-                font-size: 20px;
-                align-self: center;
-                color: rgb(100, 255, 100);
-                
-                border-radius: 100px;
-                }
-                
-                .medium{
-                display:flex;
-                flex-direction: column;
-                font-size: 20px;
-                align-self: center;
-                color: rgb(100, 255, 100);
-                
-                border-radius: 100px;
-                }
-                
-                .hard{
-                display:flex;
-                flex-direction: column;
-                font-size: 20px;
-                align-self: center;
-                color: rgb(100, 255, 100);
-                
-                
-}
-.imgLevels{
-    margin-top: -29px;
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    }
-.warning,.warning1,.warning3{
-    padding-left: 10px;
-        width: 250px;
-        font-weight: bolder;
-        height: 500px;
-        
-        padding-top: 10px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 50px;
-        color: red;
-        border: 1px solid red;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 15px;
-        display: none;
-    }
-    .warningimg{
-        width: 150px; height:150px; border-radius: 100px; margin-left:  50px; margin-top: -30px;
-    }
-#agree,#agreelvl1,#agreelvl3{
-    height: 40px;
-    width: 200px;
-    background-color: transparent;
-    border: 1px solid red;
-    font-size: 25px;
-    margin-left: 20px;
-    color: red;
-    font-weight: bolder;
-    margin-top: 20px;
-    }
-    .note{
-        font-size: 40px; 
-        padding-left: 30px;
-    }
-    .box {
-        margin-top: 80px;
-        margin-left: 20px;
-        width: 300px;
-        height: 500px;
-        border: 1px solid rgb(83, 240, 83);
-    }
-    .success{
-        padding-left: 30px;
-            width: 550px;
-            font-weight: bolder;
-            height: 470px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 120px;
-            color: rgb(83, 240, 83);
-            border: 1px solid rgb(125, 255, 125);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-           display: none;
-        }
-        .failure{
-        padding-left: 30px;
-            width: 280px;
-            font-weight: bolder;
-            height: 470px;
-            padding-left: 50px;
-            padding-top: 10px;
-            word-spacing: 2px;
-            margin-top: 100px;
-            margin-left: 20px;
-            color: red;
-            border: 1px solid red;
-            font-family: 'Courier New', Courier, monospace;
-           display: none;
-           
-        }
-        #welldoneimg{
-            margin-top: 10px;
-            margin-left: -50px;
-            }
-            .welldone{
-               margin-left: -60px;
-            }
-            .face {
-                width: 100px;
-                height: 100px;
-                border: 2px solid rgb(126, 249, 126);
-                margin-left: 20px;
-                border-radius: 150px;
-            }
-            .wire1 {
-            width: 1px;
-            margin-left: 70px;
-            margin-top: -2px;
-            height: 50px;
-            border: 1px solid rgb(83, 240, 83);
-            }
-            .wire11 {
-            width: 1px;
-            margin-left: 70px;
-            height: 70px;
-            border: 1px solid rgb(83, 240, 83);
-            }
-            .lefthand {
-            width: 50px;
-            margin-left: 70px;
-            height: 1px;
-            border: 1px solid rgb(83, 240, 83);
-            transform: rotate(45deg);
-            }
-            .righthand {
-            width: 50px;
-            margin-left: 20px;
-            height: 1px;
-            border: 1px solid rgb(83, 240, 83);
-            transform: rotate(-45deg);
-            }
-            .leftleg {
-            width: 50px;
-            margin-left: 70px;
-            height: 1px;
-            border: 1px solid rgb(83, 240, 83);
-            transform: rotate(45deg);
-            }
-            .rightleg {
-            width: 50px;
-            margin-left: 20px;
-            height: 1px;
-            border: 1px solid rgb(83, 240, 83);
-            transform: rotate(-45deg);
-            }
-            .tire1 {
-            margin-top: 0px;
-            margin-left: 70px;
-            width: 1px;
-            height: 60px;
-            border: 1px solid rgb(83, 240, 83);
-            }
-            .tire2 {
-            margin-top: 50px;
-            margin-left: 70px;
-            width: 160px;
-            height: 1px;
-            border: 1px solid rgb(83, 240, 83);
-            }
-            .base {
-            margin-top: -30px;
-            margin-left: 140px;
-            width: 1px;
-            height: 260px;
-            border: 1px solid rgb(83, 240, 83);
-            transform: rotate(90deg);
-            }
-            .result,.resultlvl1,.resultlvl3{
-                padding-left: 10px;
-                    width: 230px;
-                    height: 380px;
-                    padding-left: 100px;
-                    padding-top: 130px;
-                    word-spacing: 2px;
-                    margin-top: 100px;
-                    margin-left: 20px;
-                    border: 1px solid rgb(126, 249, 126);
-                    font-family: 'Courier New', Courier, monospace;
-                    font-size: 50px;
-                    display: none;
-                  
-                }
-               
-                #agreee,#agreeelvl1,#agreeelvl3,#back{
-                    height: 40px;
-                    width: 200px;
-                    background-color: transparent;
-                    border: 1px solid green;
-                    font-size: 25px;
-                    margin-left: -30px;
-                    color: green;
-                    font-weight: bolder;
-                    margin-top: 20px;
-                    }
-                    .order,.order1,.order3 {
-                        /* font-size: 20px;
-                        width: 200px;
-                        padding-left: 10px;
-                        padding-top: 10px; */
-                        font-size: 20px;
-                        padding-left: 30px;
-                       margin-top: -100px;
-                        
-                        font-family: 'Courier New', Courier, monospace;
-                        
-                    }
-                    .word,.wordslvl1,.wordslvl3 {
-                        width: 200px;
-                        padding-left: 10px;
-                        margin-top: 20px;
-                        margin-left: 50px;
-                        height: 40px;
-                        font-size: 20px;
-                        color: rgb(83, 240, 83);
-                        border: 1px solid rgb(83, 240, 83);
-                        }
-                        #guess,#guesslv1,#guesslvl3{
-                        margin-top: 20px;
-                        background-color: transparent;
-                        color: rgb(83, 240, 83);
-                        font-family: 'Courier New', Courier, monospace;
-                        padding-left: 50px;
-                        width: 200px;
-                        height: 30px;
-                        margin-left: 20px;
-                        border: 2px solid rgb(83, 240, 83);
-                        }
-                        #submit,#submitlv1,#submitlvl3 {
-                        margin-left: 50px;
-                        margin-top: 40px;
-                        border: 1px solid rgb(83, 240, 83);
-                        background-color: transparent;
-                        width: 200px;
-                        height: 40px;
-                        font-family: 'Courier New', Courier, monospace;
-                        font-size: 20px;
-                        color: rgb(83, 240, 83);
-                        }
-                        #submit:hover,#submitlv1:hover,#submitlvl3:hover {
-                        background-color: rgb(83, 240, 83);
-                        color: darkgreen;
-                        cursor: pointer;
-                        }
-                        #Hint, #Hintlvl1, #Hintlvl3 {
-                            height: 40px;
-                            width: 200px;
-                            display: none;
-                            border: 1px solid green;
-                            font-size: 25px;
-                            margin-top: 10px;
-                            color: rgb(83, 240, 83);
-                            font-weight: bolder;
-                            /* Aligning with the submit button */
-                            margin-left: 50px; /* Same as the submit button's margin-left */
-                            padding-left: 0;   /* Reset padding */
-                        }
-                        .wirelong {
-                            margin-left: 35px;
-                            margin-top: 35px;
-                            width: 400px;
-                            height: 1px;
-                            border: 1px solid rgb(83, 240, 83);
-                            transform: rotate(90deg);
-                            }
-                            #fail{
-                                margin-left: 20px;
-                            }
-                            #failimg{
-                                margin-left: 20px;
-                            }
-                        
-}
-@media (max-width: 1024px) and (min-width: 769px) {
-    /* Styles for tablets or smaller laptops */
-    .typing {
-        font-size: 40px;
-        padding-left: 200px;
-        width: 1203px;
-        overflow: hidden;
-        white-space: nowrap;
-        font-family: 'Courier New', Courier, monospace;
-        animation: typing 2s steps(20, end), .2s steps(12, end);
-    }
-    @keyframes typing {
-        from { width: 0; }
-    }
-    #wellcome{
-        font-size: 30px; 
-        padding-left: 60px;
-    }
-    .regis{
-        font-size: 30px; padding-left: 100px;
-    }
-    #smiling{
-        width: 100px;
-         height: 100px;
-         margin-left: 360px;
-    }
-    .box {
-        margin-top: -280px;
-        margin-left: 400px;
-        width: 400px;
-        height: 500px;
-        border: 1px solid rgb(83, 240, 83);
-    }
-    .order,.order1,.order3 {
-        font-size: 30px;
-        width: 400px;
-        padding-left: 300px;
-        padding-top: 120px;
-    }
-    #btn {
-        margin-left: 200px;
-        margin-top: 26px;
-        border: 1px solid rgb(83, 240, 83);
-        background-color: transparent;
-        width: 200px;
-        height: 60px;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 50px;
-        color: rgb(83, 240, 83);
-    }
-    #btn:hover {
-        background-color: rgb(83, 240, 83);
-        color: darkgreen;
-        cursor: pointer;
-    }
-    .intro {
-        padding-left: 70px;
-        width: 700px;
-        height: 800px;
-        padding-top: 20px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 120px; 
-        border: 1px solid rgb(126, 249, 126);
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 20px;
-    }
-    .face {
-        width: 100px;
-        height: 100px;
-        border: 2px solid rgb(126, 249, 126);
-        margin-left: 120px;
-        border-radius: 150px;
-    }
-    .wire1 {
-    width: 1px;
-    margin-left: 170px;
-    margin-top: -2px;
-    height: 50px;
-    border: 1px solid rgb(83, 240, 83);
-    }
-    .wire11 {
-    width: 1px;
-    margin-left: 170px;
-    height: 70px;
-    border: 1px solid rgb(83, 240, 83);
-    }
-    .lefthand {
-    width: 50px;
-    margin-left: 170px;
-    height: 1px;
-    border: 1px solid rgb(83, 240, 83);
-    transform: rotate(45deg);
-    }
-    .righthand {
-    width: 50px;
-    margin-left: 120px;
-    height: 1px;
-    border: 1px solid rgb(83, 240, 83);
-    transform: rotate(-45deg);
-    }
-    .leftleg {
-    width: 50px;
-    margin-left: 170px;
-    height: 1px;
-    border: 1px solid rgb(83, 240, 83);
-    transform: rotate(45deg);
-    }
-    .rightleg {
-    width: 50px;
-    margin-left: 120px;
-    height: 1px;
-    border: 1px solid rgb(83, 240, 83);
-    transform: rotate(-45deg);
-    }
-    .tire1 {
-    margin-top: 0px;
-    margin-left: 170px;
-    width: 1px;
-    height: 60px;
-    border: 1px solid rgb(83, 240, 83);
-    }
-    .tire2 {
-    margin-top: 50px;
-    margin-left: 170px;
-    width: 160px;
-    height: 1px;
-    border: 1px solid rgb(83, 240, 83);
-    }
-    .base {
-    margin-top: -30px;
-    margin-left: 200px;
-    width: 1px;
-    height: 260px;
-    border: 1px solid rgb(83, 240, 83);
-    transform: rotate(90deg);
-    }
-    .wirelong {
-    margin-left: 135px;
-    margin-top: 35px;
-    width: 400px;
-    height: 1px;
-    border: 1px solid rgb(83, 240, 83);
-    transform: rotate(90deg);
-    }
-    .word,.wordslvl1,.wordslvl3 {
-    width: 200px;
-    padding-left: 20px;
-    margin-top: 20px;
-    margin-left: 350px;
-    height: 40px;
-    font-size: 30px;
-    color: rgb(83, 240, 83);
-    border: 1px solid rgb(83, 240, 83);
-    }
-    #guess,#guesslv1,#guesslvl3{
-    margin-top: 200px;
-    background-color: transparent;
-    color: rgb(83, 240, 83);
-    font-family: 'Courier New', Courier, monospace;
-    padding-left: 10px;
-    width: 200px;
-    height: 30px;
-    margin-left: 50px;
-    border: 2px solid rgb(83, 240, 83);
-    }
-    #submit,#submitlv1,#submitlvl3 {
-    margin-left: 50px;
-    margin-top: 80px;
-    border: 1px solid rgb(83, 240, 83);
-    background-color: transparent;
-    width: 200px;
-    height: 40px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 30px;
-    color: rgb(83, 240, 83);
-    }
-    #submit:hover,#submitlv1:hover,#submitlvl3:hover {
-    background-color: rgb(83, 240, 83);
-    color: darkgreen;
-    cursor: pointer;
-    }
-    .result,.resultlvl1,.resultlvl3{
-    padding-left: 10px;
-        width: 600px;
-        height: 350px;
-        padding-left: 100px;
-        padding-top: 130px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 150px;
-        border: 1px solid rgb(126, 249, 126);
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 50px;
-        display: none;
-      
-    }
-    #welldoneimg{
-        height: 200px; width: 200px; margin-left: 140px;
-    }
-    .welldone{
-    margin-top: -100px;
-    margin-left: 140px;
-    }
-    #failimg{
-        width: 200px; height:200px; border-radius: 100px; margin-left: 170px; margin-top: -30px;
-    }
-    #smiling{
-    border-radius: 95px;
-    width: 350px;
-    height: 350px;
-    margin-left: 150px;
-    }
-    #agreee,#agreeelvl1,#agreeelvl3,#back{
-    height: 40px;
-    width: 200px;
-    background-color: transparent;
-    border: 1px solid green;
-    font-size: 25px;
-    margin-left: 145px;
-    color: green;
-    font-weight: bolder;
-    margin-top: 20px;
-    }
-    #back:hover,#agreee:hover,#agreeelvl1:hover,#agreeelvl3:hover{
-    background-color: rgb(126, 249, 126);
-    border: 2px solid rgb(83, 240, 83);
-    font-weight: bolder;
-    color: green;
-    cursor: pointer;
-    }
-    .warning,.warning1,.warning3{
-    padding-left: 30px;
-        width: 550px;
-        font-weight: bolder;
-        height: 489px;
-        padding-left: 50px;
-        padding-top: 10px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 200px;
-        color: red;
-        border: 1px solid red;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 20px;
-        display: none;
-    }
-    
-    #agree,#agreelvl1,#agreelvl3{
-    height: 40px;
-    width: 200px;
-    background-color: transparent;
-    border: 1px solid red;
-    font-size: 25px;
-    margin-left: 150px;
-    color: red;
-    font-weight: bolder;
-    margin-top: 20px;
-    }
-    #agree:hover,#agreelvl1:hover,#agreelvl3:hover{
-    background-color: rgb(126, 249, 126);
-    border: 2px solid rgb(83, 240, 83);
-    font-weight: bolder;
-    color: green;
-    cursor: pointer;
-    }
-    #Hint,#Hintlvl1,#Hintlvl3{
-    height: 40px;
-    width: 200px;
-    display: none;
-    border: 1px solid green;
-    font-size: 25px;
-    margin-left: 350px;
-    color: rgb(83, 240, 83);
-    font-weight: bolder;
-    margin-top: 20px;
-    }
-    .levels{
-    display: none;
-    align-content: center;
-    justify-content: space-evenly;
-    
-    font-size: 20px;
-    font-weight: bolder;
-    width: 900px;
-    height: 400px;
-    margin-top: 200px;
-    margin-left: 50px;
-    color: rgb(125, 255, 125);
-    border: 2px solid rgb(83, 240, 83);
-    border-radius: 20px;
-    }
-    .easy{
-    display:flex;
+/* Game Area Layout */
+.game-area {
+    display: flex;
     flex-direction: column;
-    font-size: 30px;
-    align-self: center;
-    color: rgb(100, 255, 100);
-    
-    border-radius: 100px;
-    }
-    
-    .medium{
-    display:flex;
-    flex-direction: column;
-    font-size: 30px;
-    align-self: center;
-    color: rgb(100, 255, 100);
-    
-    border-radius: 100px;
-    }
-    
-    .hard{
-    display:flex;
-    flex-direction: column;
-    font-size: 30px;
-    align-self: center;
-    color: rgb(100, 255, 100);
-    
-    border-radius: 100px;
-    }
-    
-    #easy , #hard ,#medium{
+    align-items: center;
+    gap: 30px;
     width: 100%;
-    
-    height: inherit;
-    
-    
-    
-    }
-    
-    .textLevels{
-    border-radius: 20px;
-    border: 2px solid rgb(83, 240, 83);
-    font-weight: bolder;
-    color: green;
-    text-align: center;
-    padding: 10px 30px;
-    margin-top: 20px;
-    
-    }
-    .textLevels:hover{
-    background-color: rgb(126, 249, 126);
-    border: 2px solid rgb(83, 240, 83);
-    font-weight: bolder;
-    color: green;
-    cursor: pointer;
-    
-    }
-    .imgLevels{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    }
-    .success{
-    padding-left: 30px;
-        width: 550px;
-        font-weight: bolder;
-        height: 470px;
-        padding-left: 50px;
-        padding-top: 10px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 150px;
-        color: rgb(83, 240, 83);
-        border: 1px solid rgb(125, 255, 125);
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 20px;
-       display: none;
-    }
-    .failure{
-    padding-left: 30px;
-        width: 550px;
-        font-weight: bolder;
-        height: 470px;
-        padding-left: 50px;
-        padding-top: 10px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 150px;
-        color: red;
-        border: 1px solid red;
-        font-family: 'Courier New', Courier, monospace;
-       display: none;
-       
-    }
-    #fail{
-    height: 40px;
-    width: 200px;
-    background-color: transparent;
-    border: 1px solid red;
-    font-size: 25px;
-    margin-left: 180px;
-    color: red;
-    font-weight: bolder;
-    margin-top: 20px;
-    }
-    #fail:hover{
-    background-color: rgb(255, 69, 69);
-    color: brown;
-    }
-    .signup{
-        padding-left: 30px;
-        width: 400px;
-        font-weight: bolder;
-        height: 770px;
-        padding-left: 50px;
-        padding-top: 10px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 290px;
-        color: rgb(83, 240, 83);
-        border: 1px solid rgb(125, 255, 125);
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 40px;
-       border-radius: 20px;
-     
-    }
-    #sign,#signin{
-    width: 300px;
-    height: 40px;
-    border-radius: 20px;
-    padding-left: 20px;
-    color: green;
-    border: 1px solid rgb(126, 249, 126);
-    
-    }
-    #signingup,#signingin{
-    width: 150px;
-    height: 40px;
-    color: rgb(83, 240, 83);
-    background-color: transparent;
-    border: 2px solid rgb(100, 255, 100);
-     margin-left: 100px;
-      border-radius: 30px;
-       margin-top: 10px;
-       font-size: 20px;
-    }
-    #signingup:hover{
-    background-color: rgb(126, 249, 126);
-    color: green;}
-    #signingin:hover{
-    background-color: rgb(126, 249, 126);
-    color: green;
-    }
-    .signin{
-    padding-left: 30px;
-        width: 400px;
-        font-weight: bolder;
-        height: 770px;
-        padding-left: 50px;
-        padding-top: 10px;
-        word-spacing: 2px;
-        margin-top: 100px;
-        margin-left: 290px;
-        color: rgb(83, 240, 83);
-        border: 1px solid rgb(125, 255, 125);
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 40px;
-       border-radius: 20px;
-
-       /* responsive la ka dhigay */
 }
+
+.hangman-display {
+    position: relative;
+    width: 250px; /* Base container size */
+    height: 250px; /* Adjusted height for simpler figure */
+    margin-bottom: 20px;
+    display: block;
+    background: linear-gradient(to top, #e8f5e9, #b9f6ca); /* Softer, lighter sky background */
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Very subtle inner shadow */
+    overflow: hidden; /* Ensure parts don't go outside */
+}
+
+/* --- Stylish & Simple Hangman --- */
+/* All hangman parts, hidden by default by JS */
+.hangman-display div {
+    background-color: #795548; /* Consistent brown for tree structure */
+    position: absolute;
+    border-radius: 8px; /* Rounded edges for all parts */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    display: none; /* Controlled by JavaScript */
+    /* Add a subtle transition for parts appearing */
+    transition: all 0.3s ease-out;
+}
+
+/* Base Log / Ground */
+.base {
+    width: 180px;
+    height: 15px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px 10px 0 0; /* Flat bottom, rounded top for a log */
+    background-color: #6d4c41; /* Darker brown for the base */
+}
+
+/* Vertical Tree Trunk */
+.wire1 { /* Changed from 'wire1' to 'trunk' conceptually */
+    width: 15px;
+    height: 200px;
+    bottom: 15px; /* Sits on the base */
+    left: 50px; /* Positioned more to the left */
+    border-radius: 8px;
+    background-color: #795548; /* Matching tree color */
+}
+
+/* Horizontal Branch */
+.wire11 { /* Changed from 'wire11' to 'branch' conceptually */
+    width: 120px;
+    height: 12px;
+    top: 20px;
+    left: 50px; /* Starts from the trunk */
+    border-radius: 6px;
+    background-color: #795548; /* Matching tree color */
+}
+
+/* Rope/Vine */
+.wirelong { /* Changed from 'wirelong' to 'rope' conceptually */
+    width: 5px;
+    height: 40px;
+    top: 32px; /* Hangs from the branch */
+    left: 150px; /* End of the branch */
+    border-radius: 2px;
+    background-color: #5d4037; /* Darker, rope-like brown */
+}
+
+/* Creature Parts - Starting Point of Hanging */
+
+/* Head (Simple Circle) */
+.face {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Perfect circle */
+    background-color: #fdd835; /* Friendly yellow */
+    top: 65px; /* Hung from the rope */
+    left: 150px;
+    transform: translateX(-50%); /* Centered on the rope's end */
+    border: 3px solid #6d4c41; /* Brown border */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Body (Rounded Rectangle) */
+.tire1 { /* Changed from 'tire1' to 'body' conceptually */
+    width: 60px;
+    height: 80px;
+    border-radius: 30px; /* Very rounded capsule shape */
+    background-color: #9ccc65; /* Lighter green for body */
+    top: 105px; /* Below head */
+    left: 150px;
+    transform: translateX(-50%);
+    z-index: 2; /* Ensures it sits below limbs if needed */
+    border: 2px solid #568203;
+}
+
+/* Legs (Simple Rounded Rectangles) */
+.leftleg { /* Changed from 'leftleg' to 'leg' conceptually */
+    width: 20px;
+    height: 45px;
+    border-radius: 10px; /* Rounded leg shape */
+    background-color: #ffb74d; /* Orange for feet/legs */
+    top: 175px; /* Lower than body */
+    left: 135px; /* Slightly offset */
+    transform: rotate(15deg);
+    z-index: 1; /* Below body if needed */
+}
+
+.rightleg { /* Changed from 'rightleg' to 'leg' conceptually */
+    width: 20px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #ffb74d;
+    top: 175px;
+    left: 165px; /* Slightly offset */
+    transform: rotate(-15deg);
+    z-index: 1;
+}
+
+/* Arms (Simple Rounded Rectangles) */
+.lefthand { /* Changed from 'lefthand' to 'arm' conceptually */
+    width: 45px;
+    height: 15px;
+    border-radius: 8px; /* Rounded arm shape */
+    background-color: #9ccc65; /* Matching body color */
+    top: 120px; /* Level with upper body */
+    left: 105px; /* Extends from side */
+    transform: rotate(-35deg);
+    z-index: 3; /* Ensures it sits above body */
+}
+
+.righthand { /* Changed from 'righthand' to 'arm' conceptually */
+    width: 45px;
+    height: 15px;
+    border-radius: 8px;
+    background-color: #9ccc65;
+    top: 120px;
+    left: 155px; /* Extends from side */
+    transform: rotate(35deg);
+    z-index: 3;
+}
+
+/* Adding a belly part for more character detail, using 'tire2' */
+.tire2 { /* This was originally the second 'tire', now a belly */
+    width: 40px;
+    height: 30px;
+    border-radius: 20px; /* Rounded shape */
+    background-color: #e6ee9c; /* Lighter, contrasting color for belly */
+    top: 125px;
+    left: 150px;
+    transform: translateX(-50%);
+    z-index: 4; /* On top of tire1 (body) */
+    border: 1px solid #cddc39;
+}
+
+
+/* --- End Stylish & Simple Hangman --- */
+
+.game-info {
+    width: 100%;
+}
+
+.word-display {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 3em;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+    color: #4CAF50; /* Vibrant green for the word */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.word-display span {
+    display: inline-block;
+    min-width: 35px;
+    text-align: center;
+    margin: 0 5px;
+    border-bottom: 3px solid #82b74b; /* Underline for blanks */
+    padding-bottom: 5px;
+}
+
+/* Result and Success/Failure screens */
+.result, .resultlvl1, .resultlvl3 {
+    background-color: rgba(230, 255, 230, 0.9); /* Light green tint */
+    border: 2px solid #56ab2f;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: #3b5a26;
+}
+
+.failure {
+    background-color: rgba(255, 230, 230, 0.9); /* Light red tint */
+    border: 2px solid #d32f2f; /* Red for failure */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: #7f0000;
+}
+
+.success {
+    background-color: rgba(230, 245, 255, 0.9); /* Light blue tint */
+    border: 2px solid #1976d2; /* Blue for success */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: #0d47a1;
+}
+
+.result h2, .failure h1, .success h1 {
+    margin-top: 0;
+    font-size: 2em;
+}
+
+.failure p, .success p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+}
+
+.failure span#failedWord {
+    color: #d32f2f; /* Highlight the failed word in red */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+a {
+    color: #1976d2; /* Blue for links */
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 95%;
+    }
+    .screen h1 {
+        font-size: 1.8em;
+    }
+    .screen h2 {
+        font-size: 1.4em;
+    }
+    .word-display {
+        font-size: 2.2em;
+        letter-spacing: 4px;
+    }
+    input[type="text"], button {
+        font-size: 0.9em;
+        padding: 12px 25px;
+    }
+    .hangman-display {
+        width: 180px;
+        height: 200px; /* Adjusted for smaller size */
+    }
+    /* Smaller Hangman Parts */
+    .base { width: 140px; height: 12px; }
+    .wire1 { width: 12px; height: 160px; left: 35px; bottom: 12px;}
+    .wire11 { width: 100px; height: 10px; top: 15px; left: 35px; }
+    .wirelong { width: 4px; height: 30px; top: 25px; left: 125px; } /* Adjusted to match branch */
+    .face { width: 40px; height: 40px; top: 50px; left: 125px;}
+    .tire1 { width: 50px; height: 70px; top: 90px; left: 125px;}
+    .lefthand { width: 40px; height: 12px; top: 105px; left: 80px; }
+    .righthand { width: 40px; height: 12px; top: 105px; left: 130px; }
+    .leftleg { width: 18px; height: 40px; top: 155px; left: 110px; }
+    .rightleg { width: 18px; height: 40px; top: 155px; left: 140px; }
+    .tire2 { width: 35px; height: 25px; top: 108px; }
 }
